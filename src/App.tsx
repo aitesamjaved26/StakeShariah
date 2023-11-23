@@ -36,7 +36,7 @@ import DesktopUI from './dapp/desktop';
  *
  */
 
-const projectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID ?? "0ec7b16fb9939d89dedfedac7718e203";
+const projectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID ?? "ac736e4983fc967ec9ac0e8b6b16e287";
 const alchemyApiKey = "zFtQZoE1DUn-8er5Os1mHh6GWpMfASiu"
 const { publicClient, chains, webSocketPublicClient } = configureChains([bsc], [ alchemyProvider({apiKey: alchemyApiKey}), publicProvider()]);
 
