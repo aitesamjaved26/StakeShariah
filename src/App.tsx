@@ -19,6 +19,9 @@ import {InjectedConnector} from 'wagmi/connectors/injected'
 import {alchemyProvider} from "wagmi/providers/alchemy"
 import {publicProvider} from "wagmi/providers/public"
 
+import "@rainbow-me/rainbowkit/styles.css";
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+
 import {
   EthereumClient,
   w3mConnectors,
@@ -36,27 +39,29 @@ import DesktopUI from './dapp/desktop';
 const projectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID ?? "0ec7b16fb9939d89dedfedac7718e203";
 const alchemyApiKey = "zFtQZoE1DUn-8er5Os1mHh6GWpMfASiu"
 const { publicClient, chains, webSocketPublicClient } = configureChains([bsc], [ alchemyProvider({apiKey: alchemyApiKey}), publicProvider()]);
+
+const { connectors } = getDefaultWallets({
+  appName: "shariah",
+  projectId: projectId,
+  chains,
+});
+
 const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors: [new InjectedConnector({chains})],
+  autoConnect: false,
+  connectors,
   publicClient,
-  webSocketPublicClient
+  webSocketPublicClient,
 });
 
 
-const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
 const App = () => (
   <>
     <WagmiConfig config={wagmiConfig}>
-      <HomePage />
+      <RainbowKitProvider chains={chains}>
+        <HomePage />
+      </RainbowKitProvider>
     </WagmiConfig>
-
-    <Web3Modal
-      projectId={projectId}
-      //defaultChain={bsc}
-      ethereumClient={ethereumClient}
-    />
   </>
 );
 
