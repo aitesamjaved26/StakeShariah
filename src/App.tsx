@@ -88,13 +88,6 @@ function CX() {
           );
         }}
       ></img>
-      <img
-        className="h-44 w-fit cursor-pointer"
-        src="audit.png"
-        onClick={() => {
-          window.open(`https://solidaudit.xyz/audit?id=b6466fba`);
-        }}
-      ></img>
     </div>
   );
 }
