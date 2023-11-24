@@ -8,7 +8,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { readContracts } from 'wagmi';
 import { ethers } from 'ethers';
-import { prepareWriteContract, writeContract, getContract } from '@wagmi/core';
+import { prepareWriteContract, writeContract, getContract } from 'wagmi/actions';
 
 import { toast } from 'react-hot-toast';
 import { ContractFunctionExecutionError } from 'viem';
