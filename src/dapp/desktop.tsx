@@ -118,12 +118,12 @@ function DesktopUI() {
       txt: 'Share & earn',
     },
     {
-      href: 'https://bscscan.com/address/0xaa3d09edf8f3a3a1eb64f0ebe07487ffe423746f',
+      href: 'https://bscscan.com/address/0x6fac01c4f9fd8846a37952ccaab8d57e43addd93',
       icon: <FaFileContract size={22}></FaFileContract>,
       txt: 'Contract',
     },
     {
-      href: 'https://t.me/cashking964',
+      href: 'https://t.me/StakeShariah',
       icon: (
         <BsTelegram
           size={22}
@@ -138,7 +138,7 @@ function DesktopUI() {
       txt: 'FAQS',
     },
     {
-      href: 'https://t.me/cashking964',
+      href: 'https://t.me/StakeShariah',
       icon: <AiOutlineMail size={22}></AiOutlineMail>,
       txt: 'Support',
     },
@@ -165,12 +165,12 @@ function DesktopUI() {
       txt: 'Share & earn',
     },
     {
-      href: 'https://bscscan.com/address/0xaa3d09edf8f3a3a1eb64f0ebe07487ffe423746f',
+      href: 'https://bscscan.com/address/0x6fac01c4f9fd8846a37952ccaab8d57e43addd93',
       icon: <FaFileContract size={22}></FaFileContract>,
       txt: 'Contract',
     },
     {
-      href: 'https://t.me/cashking964',
+      href: 'https://t.me/StakeShariah',
       icon: (
         <BsTelegram
           size={22}
@@ -185,7 +185,7 @@ function DesktopUI() {
       txt: 'FAQS',
     },
     {
-      href: 'https://t.me/cashking964',
+      href: 'https://t.me/StakeShariah',
       icon: <AiOutlineMail size={22}></AiOutlineMail>,
       txt: 'Support',
     },
@@ -376,7 +376,7 @@ function DesktopUI() {
                 </button>
               </div>
               <p className='mb-3 text-sm text-blue-800 dark:text-blue-400'>
-                Share Your link and earn instantly on every investment up to 7%
+                Share Your link and earn instantly on every investment up to 11%
               </p>
               <div
                 className='cursor-pointer text-sm text-blue-800 underline font-medium hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300'
