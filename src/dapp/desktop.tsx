@@ -400,7 +400,7 @@ function DesktopUI() {
   );
 }
 
-export default DesktopUI;
+//export default DesktopUI;
 
 function DashBoard({ status }: { status: UserStats }) {
   const [tab, setTab] = useState('Invest');
