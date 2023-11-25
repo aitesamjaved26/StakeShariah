@@ -84,7 +84,7 @@ function CX() {
         src="bnb_banner.png"
         onClick={() => {
           window.open(
-            `https://bscscan.com/address/0xaa3d09edf8f3a3a1eb64f0ebe07487ffe423746f`
+            `https://bscscan.com/address/0x6fac01c4f9fd8846a37952ccaab8d57e43addd93#code`
           );
         }}
       ></img>
