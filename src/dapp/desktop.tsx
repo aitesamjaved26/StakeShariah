@@ -123,7 +123,7 @@ function DesktopUI() {
       txt: 'Contract',
     },
     {
-      href: 'https://t.me/cashking964',
+      href: 'https://t.me/StakeShariah',
       icon: (
         <BsTelegram
           size={22}
@@ -138,7 +138,7 @@ function DesktopUI() {
       txt: 'FAQS',
     },
     {
-      href: 'https://t.me/cashking964',
+      href: 'https://t.me/StakeShariah',
       icon: <AiOutlineMail size={22}></AiOutlineMail>,
       txt: 'Support',
     },
@@ -170,7 +170,7 @@ function DesktopUI() {
       txt: 'Contract',
     },
     {
-      href: 'https://t.me/cashking964',
+      href: 'https://t.me/StakeShariah',
       icon: (
         <BsTelegram
           size={22}
@@ -185,7 +185,7 @@ function DesktopUI() {
       txt: 'FAQS',
     },
     {
-      href: 'https://t.me/cashking964',
+      href: 'https://t.me/StakeShariah',
       icon: <AiOutlineMail size={22}></AiOutlineMail>,
       txt: 'Support',
     },
