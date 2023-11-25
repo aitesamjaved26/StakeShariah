@@ -42,7 +42,7 @@ interface NavProbs {
 }
 function Web3Button() {
   return <w3m-button />
-  
+}
 function DesktopUI() {
   const [Affiliate, setAffiliate] = useState(true);
   const [status, setStatus] = useState<UserStats | null>(null);
@@ -400,7 +400,7 @@ function DesktopUI() {
   );
 }
 
-//export default DesktopUI;
+export default DesktopUI;
 
 function DashBoard({ status }: { status: UserStats }) {
   const [tab, setTab] = useState('Invest');
@@ -553,4 +553,4 @@ function DashBoard({ status }: { status: UserStats }) {
       </div>
     </div>
   );
-}}
+}
