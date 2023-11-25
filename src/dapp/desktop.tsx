@@ -1,4 +1,4 @@
-import { Web3Button } from '@web3modal/react';
+
 import { Modal, Spinner } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
@@ -40,6 +40,9 @@ import { adminAddress } from '../models/contract';
 interface NavProbs {
   icon: any;
 }
+function Web3Button() {
+  return <w3m-button />
+  
 function DesktopUI() {
   const [Affiliate, setAffiliate] = useState(true);
   const [status, setStatus] = useState<UserStats | null>(null);

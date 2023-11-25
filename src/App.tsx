@@ -1,6 +1,8 @@
-import React from 'react';
-import styles from './style';
-import { configureChains, createConfig, useAccount, WagmiConfig } from 'wagmi';
+import React from "react";
+import styles from "./style";
+import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
+import { WagmiConfig, useAccount } from "wagmi";
+import { bsc } from "viem/chains";
 
 import {
   Navbar,
@@ -14,44 +16,25 @@ import {
   CTA,
   Footer,
 } from './landing/components';
-import { bsc } from 'wagmi/chains';
+import DesktopUI from "./dapp/desktop";
 
-import {
-  EthereumClient,
-  w3mConnectors,
-  w3mProvider,
-} from '@web3modal/ethereum';
-import { Web3Modal } from '@web3modal/react';
-import DesktopUI from './dapp/desktop';
 
 /**
  *
  *
  *
  */
-const projectId = '3470066f3019ecb114735fabed66cca2';
+const projectId = "ac736e4983fc967ec9ac0e8b6b16e287";
 
-const chains = [bsc];
-const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors: w3mConnectors({ projectId, chains }),
-  publicClient,
-});
-
-const ethereumClient = new EthereumClient(wagmiConfig, chains);
-
+const chains = [bsc]
+const wagmiConfig = defaultWagmiConfig({ chains, projectId })
+createWeb3Modal({ wagmiConfig, projectId, chains })
 const App = () => (
   <>
     <WagmiConfig config={wagmiConfig}>
       <HomePage />
     </WagmiConfig>
 
-    <Web3Modal
-      projectId={projectId}
-      //defaultChain={bsc}
-      ethereumClient={ethereumClient}
-    />
   </>
 );
 
