@@ -84,8 +84,15 @@ function CX() {
         src="bnb_banner.png"
         onClick={() => {
           window.open(
-            `https://bscscan.com/address/0x6fac01c4f9fd8846a37952ccaab8d57e43addd93#code`
+            `https://bscscan.com/address/0xaa3d09edf8f3a3a1eb64f0ebe07487ffe423746f`
           );
+        }}
+      ></img>
+      <img
+        className="h-44 w-fit cursor-pointer"
+        src="audit.png"
+        onClick={() => {
+          window.open(`https://solidaudit.xyz/audit?id=b6466fba`);
         }}
       ></img>
     </div>
