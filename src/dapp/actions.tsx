@@ -6,7 +6,7 @@ import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { TiArrowRepeatOutline } from 'react-icons/ti';
 import { useAccount } from 'wagmi';
 import { getContract } from 'wagmi/actions';
-import { prepareWriteContract, writeContract } from 'wagmi/actions';
+import { prepareWriteContract, writeContract } from '@wagmi/core';
 import { ContractFunctionExecutionError } from 'viem';
 
 function WithdrawDialog({ onCancel }) {

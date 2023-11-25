@@ -1,5 +1,5 @@
 import React from 'react';
-import { useWeb3Modal } from '@web3modal/wagmi/react';
+import { useWeb3Modal } from '@web3modal/react';
 
 function Button({ styles }) {
   const { open, close } = useWeb3Modal();

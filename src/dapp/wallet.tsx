@@ -5,7 +5,7 @@ import { Button, Label, Modal, TextInput } from 'flowbite-react';
 import { AiOutlineQuestion } from 'react-icons/ai';
 import { useAccount } from 'wagmi';
 import { getContract } from 'wagmi/actions';
-import { prepareWriteContract, writeContract } from 'wagmi/actions';
+import { prepareWriteContract, writeContract } from '@wagmi/core';
 import { ContractFunctionExecutionError } from 'viem';
 import React from 'react';
 import Web3 from 'web3';
