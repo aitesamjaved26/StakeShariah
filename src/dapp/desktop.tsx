@@ -401,6 +401,7 @@ function DashBoard({ status }: { status: UserStats }) {
   const [modalTitle, setTitle] = useState("");
   const [showDialog, setShowDialog] = useState(false);
   const [myModal, setModal] = useState(null);
+  console.log("status", status);
   return (
     <div className="">
       {showDialog && (
@@ -424,11 +425,11 @@ function DashBoard({ status }: { status: UserStats }) {
             <div className="flex flex-col">
               <div>
                 <p className="text-xl font-semibold font-poppins text-gray-500">
-                  Available Balance
+                Available Withdraw
                 </p>
               </div>
               <div className="flex flex-row justify-between items-center">
-                <div className="text-3xl font-bold">{status.profit} BNB</div>
+                <div className="text-3xl font-bold">{parseFloat(status.getUserAvailable).toFixed(4)} BNB</div>
               </div>
               <div>~ 0 $</div>
             </div>
@@ -440,12 +441,12 @@ function DashBoard({ status }: { status: UserStats }) {
             <div className="flex flex-col">
               <div>
                 <p className="text-xl font-semibold font-poppins text-gray-500">
-                  Deposits
+                  Total Deposits
                 </p>
               </div>
               <div className="flex flex-row justify-between items-center">
                 <div className="text-3xl font-bold">
-                  {`${status.getUserTotalDeposits}`} BNB
+                  {`${parseFloat(status.getUserTotalDeposits).toFixed(4)}`} BNB
                 </div>
               </div>
               <div>~ 0 $</div>
@@ -458,12 +459,12 @@ function DashBoard({ status }: { status: UserStats }) {
             <div className="flex flex-col">
               <div>
                 <p className="text-xl font-semibold font-poppins text-gray-500">
-                  Withdrawals
+                  Total Withdrawals
                 </p>
               </div>
               <div className="flex flex-row justify-between items-center">
                 <div className="text-3xl font-bold">
-                  {status.getUserTotalWithdrawn} BNB
+                  {parseFloat(status.getUserTotalWithdrawn).toFixed(4)} BNB
                 </div>
               </div>
               <div>~ 0 $</div>

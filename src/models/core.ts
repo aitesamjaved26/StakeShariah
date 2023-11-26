@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import { contractABI, contractAddress } from "./contract";
 import { readContracts } from "wagmi";
 
@@ -62,7 +62,7 @@ export async function readValues(
         units === "wei"
           ? ethers.utils.formatUnits(value, units)
           : ethers.utils.formatEther(value);
-      return parseFloat(formattedValue).toFixed(6);
+      return parseFloat(formattedValue).toFixed(4);
     };
 
 
@@ -73,9 +73,9 @@ export async function readValues(
       getUserReferralsStats: "",
       referral: data[0].result["referral"],
       profit: formatValue(data[1].result),
-      getUserTotalDeposits: formatValue(data[0].result["totalDeposits"]),
-      getUserAvailable: formatValue(data[0].result["balance"], "wei"),
-      getUserTotalWithdrawn: formatValue(data[0].result["totalWithdrawals"]),
+      getUserTotalDeposits: ethers.utils.formatEther(data[0].result[1] as BigNumber),
+      getUserAvailable: ethers.utils.formatEther(data[0].result[0] as BigNumber),
+      getUserTotalWithdrawn: ethers.utils.formatEther(data[0].result[2] as BigNumber),
       userdata: null,
       deposits: data[0].result["deposits"]?.reverse() || [],
       withdrawals: [],
