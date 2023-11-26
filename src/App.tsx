@@ -15,9 +15,8 @@ import {
   Clients,
   CTA,
   Footer,
-} from './landing/components';
+} from "./landing/components";
 import DesktopUI from "./dapp/desktop";
-
 
 /**
  *
@@ -29,12 +28,12 @@ const projectId = "ac736e4983fc967ec9ac0e8b6b16e287";
 const chains = [bsc]
 const wagmiConfig = defaultWagmiConfig({ chains, projectId })
 createWeb3Modal({ wagmiConfig, projectId, chains })
+
 const App = () => (
   <>
     <WagmiConfig config={wagmiConfig}>
       <HomePage />
     </WagmiConfig>
-
   </>
 );
 
@@ -46,7 +45,7 @@ function HomePage() {
     return <DesktopUI></DesktopUI>;
   }
   return (
-    <div className='bg-primary w-full overlow-hidden'>
+    <div className="bg-primary w-full overlow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
@@ -79,21 +78,14 @@ function HomePage() {
 
 function CX() {
   return (
-    <div className='flex flex-col md:flex-row gap-10 justify-center items-start'>
+    <div className="flex flex-col md:flex-row gap-10 justify-center items-start">
       <img
-        className='h-44 w-fit cursor-pointer'
-        src='bnb_banner.png'
+        className="h-44 w-fit cursor-pointer"
+        src="bnb_banner.png"
         onClick={() => {
           window.open(
-            `https://bscscan.com/address/0xaa3d09edf8f3a3a1eb64f0ebe07487ffe423746f`
+            `https://bscscan.com/address/0x6fac01c4f9fd8846a37952ccaab8d57e43addd93#code`
           );
-        }}
-      ></img>
-      <img
-        className='h-44 w-fit cursor-pointer'
-        src='audit.png'
-        onClick={() => {
-          window.open(`https://solidaudit.xyz/audit?id=b6466fba`);
         }}
       ></img>
     </div>

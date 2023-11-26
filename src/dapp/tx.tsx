@@ -79,12 +79,12 @@ function TxPage({ status }: { status: UserStats }) {
         </div>
       </div>
       <div className='mt-5 w-full'>
-        {currentTab != 'Deposits' && status.withdrawals.length == 0 && (
+        {currentTab != 'Deposits' && (!status.withdrawals || status.withdrawals.length == 0) && (
           <div className='flex flex-col font-poppins font-semibold text-2xl h-64 justify-center items-center'>
             No Transcations yet!
           </div>
         )}
-        {currentTab == 'Deposits' && status.deposits.length == 0 && (
+        {currentTab == 'Deposits' && (!status.deposits || status.deposits.length == 0) && (
           <div className='flex flex-col font-poppins font-semibold text-2xl h-64 justify-center items-center'>
             No Transcations yet!
           </div>

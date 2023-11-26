@@ -1,7 +1,6 @@
-
-import { Modal, Spinner } from 'flowbite-react';
-import React, { useEffect, useState } from 'react';
-import { Toaster } from 'react-hot-toast';
+import { Modal, Spinner } from "flowbite-react";
+import React, { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import {
   AiOutlineArrowDown,
   AiOutlineBell,
@@ -9,28 +8,30 @@ import {
   AiOutlineMail,
   AiOutlinePlusCircle,
   AiOutlineQuestion,
-} from 'react-icons/ai';
-import { menu } from '../assets';
+  AiOutlineArrowUp,
+} from "react-icons/ai";
+import { menu } from "../assets";
 
-import { BsTelegram } from 'react-icons/bs';
+import { BsTelegram } from "react-icons/bs";
 import {
   FaArrowDown,
   FaArrowUp,
   FaDollarSign,
   FaFileContract,
-} from 'react-icons/fa';
-import { HiArrowCircleUp, HiTable } from 'react-icons/hi';
-import { TiArrowRepeatOutline } from 'react-icons/ti';
-import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi';
-import readValues from '../models/core';
-import WithdrawDialog, { CapitalWithdrawD, ReinvestD } from './actions';
-import FAQSection from './faqs';
-import RefferalUI from './refferal';
-import TxPage from './tx';
-import { InvestUI, UserStats } from './wallet';
-import AdminPanel from './admin';
-import { navLinks } from '../constants/index';
-import { adminAddress } from '../models/contract';
+} from "react-icons/fa";
+import { HiArrowCircleUp, HiTable } from "react-icons/hi";
+import { TiArrowRepeatOutline } from "react-icons/ti";
+import { useAccount, useNetwork, useSwitchNetwork } from "wagmi";
+import readValues from "../models/core";
+import WithdrawDialog, { CapitalWithdrawD, ReinvestD } from "./actions";
+import FAQSection from "./faqs";
+import RefferalUI from "./refferal";
+import TxPage from "./tx";
+import { InvestUI, UserStats } from "./wallet";
+import AdminPanel from "./admin";
+import { navLinks } from "../constants/index";
+import { adminAddress } from "../models/contract";
+import { UplinePartner } from "./actions";
 /***
  *
  *
@@ -40,16 +41,17 @@ import { adminAddress } from '../models/contract';
 interface NavProbs {
   icon: any;
 }
+
 function Web3Button() {
-  return <w3m-button />
+  return <w3m-button />;
 }
 function DesktopUI() {
   const [Affiliate, setAffiliate] = useState(true);
-  const [status, setStatus] = useState<UserStats | null>(null);
+  const [status, setStatus] = useState<UserStats | null | any>(null);
   const [toggle, setToggle] = useState(false);
 
   const [showMenu, setMenu] = useState(false);
-  const [currentPage, SetPage] = useState('Dashboard');
+  const [currentPage, SetPage] = useState("Dashboard");
   const { chain } = useNetwork();
   const { switchNetwork } = useSwitchNetwork();
 
@@ -59,15 +61,15 @@ function DesktopUI() {
   const { isConnected, address } = useAccount();
 
   function getCurrentPage() {
-    if (currentPage == 'Dashboard') {
+    if (currentPage == "Dashboard") {
       return <DashBoard status={status}></DashBoard>;
-    } else if (currentPage == 'Share & earn') {
+    } else if (currentPage == "Share & earn") {
       return <RefferalUI status={status}></RefferalUI>;
-    } else if (currentPage == 'Transactions') {
+    } else if (currentPage == "Transactions") {
       return <TxPage status={status}></TxPage>;
-    } else if (currentPage == 'FAQS') {
+    } else if (currentPage == "FAQS") {
       return <FAQSection></FAQSection>;
-    } else if (currentPage == 'Admin Panel') {
+    } else if (currentPage == "Admin Panel") {
       return <AdminPanel></AdminPanel>;
     } else {
       return <div>Page Not found</div>;
@@ -75,9 +77,14 @@ function DesktopUI() {
   }
   function toggleMenu() {
     setMenu(!showMenu);
-    console.log('hi');
+    console.log("hi");
   }
   useEffect(() => {
+    const getVal = async () => {
+      const val = await readValues(address);
+      console.log("val", val);
+      setStatus(val);
+    }
     if (isConnected && chain?.id != 97) {
       setBanner(true);
     } else {
@@ -85,8 +92,11 @@ function DesktopUI() {
     }
     SetLoading(true);
     if (isConnected) {
+      console.log("address", address);
+      console.log("isConnected", isConnected);
+      getVal();
       readValues(address).then((value) => {
-        console.log(value);
+        console.log("value" ,value);
         setTimeout(() => {
           SetLoading(false);
 
@@ -100,9 +110,9 @@ function DesktopUI() {
   }, [address, chain, isConnected]);
   const mylistNav = [
     {
-      href: '#',
+      href: "#",
       icon: <HiTable size={22}></HiTable>,
-      txt: 'Dashboard',
+      txt: "Dashboard",
     },
     // {
     //   href: '#',
@@ -110,46 +120,41 @@ function DesktopUI() {
     //   txt: 'Transactions',
     // },
     {
-      href: '#',
+      href: "#",
       icon: <AiOutlineDollar size={22}></AiOutlineDollar>,
-      txt: 'Share & earn',
+      txt: "Share & earn",
     },
     {
-      href: 'https://bscscan.com/address/0xaa3d09edf8f3a3a1eb64f0ebe07487ffe423746f',
+      href: "https://bscscan.com/address/0x6fac01c4f9fd8846a37952ccaab8d57e43addd93",
       icon: <FaFileContract size={22}></FaFileContract>,
-      txt: 'Contract',
+      txt: "Contract",
     },
     {
-      href: 'https://t.me/cashking964',
-      icon: (
-        <BsTelegram
-          size={22}
-          color={`#2AABEE`}
-        ></BsTelegram>
-      ),
-      txt: 'Community',
+      href: "https://t.me/StakeShariah",
+      icon: <BsTelegram size={22} color={`#2AABEE`}></BsTelegram>,
+      txt: "Community",
     },
     {
-      href: '#',
+      href: "#",
       icon: <AiOutlineQuestion size={22}></AiOutlineQuestion>,
-      txt: 'FAQS',
+      txt: "FAQS",
     },
-    {
-      href: 'https://t.me/cashking964',
+/*     {
+      href: "https://t.me/StakeShariah",
       icon: <AiOutlineMail size={22}></AiOutlineMail>,
-      txt: 'Support',
-    },
+      txt: "Support",
+    }, */
   ];
   const mylistNav2 = [
     {
-      href: '#',
+      href: "###",
       icon: <HiTable size={22}></HiTable>,
-      txt: 'Dashboard',
+      txt: "Dashboard",
     },
     {
-      href: '#',
+      href: "#",
       icon: <HiTable size={22}></HiTable>,
-      txt: 'Admin Panel',
+      txt: "Admin Panel",
     },
     // {
     //   href: '#',
@@ -157,34 +162,29 @@ function DesktopUI() {
     //   txt: 'Transactions',
     // },
     {
-      href: '#',
+      href: "#",
       icon: <AiOutlineDollar size={22}></AiOutlineDollar>,
-      txt: 'Share & earn',
+      txt: "Share & earn",
     },
     {
-      href: 'https://bscscan.com/address/0xaa3d09edf8f3a3a1eb64f0ebe07487ffe423746f',
+      href: "https://bscscan.com/address/0x6fac01c4f9fd8846a37952ccaab8d57e43addd93",
       icon: <FaFileContract size={22}></FaFileContract>,
-      txt: 'Contract',
+      txt: "Contract",
     },
     {
-      href: 'https://t.me/cashking964',
-      icon: (
-        <BsTelegram
-          size={22}
-          color={`#2AABEE`}
-        ></BsTelegram>
-      ),
-      txt: 'Community',
+      href: "https://t.me/StakeShariah",
+      icon: <BsTelegram size={22} color={`#2AABEE`}></BsTelegram>,
+      txt: "Community",
     },
     {
-      href: '#',
+      href: "#",
       icon: <AiOutlineQuestion size={22}></AiOutlineQuestion>,
-      txt: 'FAQS',
+      txt: "FAQS",
     },
     {
-      href: 'https://t.me/cashking964',
+      href: "https://t.me/StakeShariah",
       icon: <AiOutlineMail size={22}></AiOutlineMail>,
-      txt: 'Support',
+      txt: "Support",
     },
   ];
   const mylistx = address == adminAddress ? mylistNav2 : mylistNav;
@@ -193,7 +193,7 @@ function DesktopUI() {
       <li
         key={`nav_${txt}`}
         onClick={() => {
-          if (href == '#') {
+          if (href == "#") {
             SetPage(txt);
           } else {
             window.open(href);
@@ -201,34 +201,31 @@ function DesktopUI() {
         }}
       >
         <a
-          href='#'
+          href="#"
           className={`flex items-center ${
             isCurrent == true ? `bg-gray-100` : ``
           }  p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group`}
         >
           <div
-            className='w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white'
-            aria-hidden='true'
+            className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+            aria-hidden="true"
           >
             {icon}
           </div>
-          <span className='ml-3'>{txt}</span>
+          <span className="ml-3">{txt}</span>
         </a>
       </li>
     );
   }
   return (
-    <div
-      id='desktop'
-      className='font-Inter'
-    >
-      <Toaster position='top-center'></Toaster>
+    <div id="desktop" className="font-Inter">
+      <Toaster position="top-center"></Toaster>
 
-      <nav className='fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700'>
-        <div className='px-3 py-3 lg:px-5 lg:pl-3'>
-          <div className='flex items-center justify-between'>
-            <div className='flex items-center justify-start'>
-              <div className='sm:hidden flex flex-1 justify-end items-center'>
+      <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        <div className="px-3 py-3 lg:px-5 lg:pl-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center justify-start">
+              <div className="sm:hidden flex flex-1 justify-end items-center">
                 {/* <img
                   src={toggle ? close : menu}
                   alt='menu'
@@ -236,40 +233,40 @@ function DesktopUI() {
                 /> */}
                 <button
                   onClick={() => setToggle((prev) => !prev)}
-                  type='button'
-                  className='inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
+                  type="button"
+                  className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 >
-                  <span className='sr-only'>Open sidebar</span>
+                  <span className="sr-only">Open sidebar</span>
                   <svg
-                    className='w-6 h-6'
-                    aria-hidden='true'
-                    fill='currentColor'
-                    viewBox='0 0 20 20'
-                    xmlns='http://www.w3.org/2000/svg'
+                    className="w-6 h-6"
+                    aria-hidden="true"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      clip-rule='evenodd'
-                      fill-rule='evenodd'
-                      d='M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z'
+                      clipRule="evenodd"
+                      fillRule="evenodd"
+                      d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
                     ></path>
                   </svg>
                 </button>
                 <div
                   className={`${
-                    toggle ? 'flex' : 'hidden'
+                    toggle ? "flex" : "hidden"
                   } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
                 >
-                  <ul className='list-none flex flex-col justify-end items-center flex-1'>
+                  <ul className="list-none flex flex-col justify-end items-center flex-1">
                     {mylistx.map((nav, index) => (
                       <li
-                        key={nav.href}
+                        key={index}
                         className={`font-poppins font-normal cursor-pointer text-[16px] ${
-                          index === navLinks.length - 1 ? 'mr-0' : 'mb-4'
+                          index === navLinks.length - 1 ? "mr-0" : "mb-4"
                         } text-white`}
                       >
                         <a
                           onClick={() => {
-                            if (nav.href == '#') {
+                            if (nav.href == "#") {
                               SetPage(nav.txt);
                             } else {
                               window.open(nav.href);
@@ -283,21 +280,18 @@ function DesktopUI() {
                   </ul>
                 </div>
               </div>
-              <a
-                href='#'
-                className='flex items-center ml-2 md:mr-24'
-              >
+              <a href="#" className="flex items-center ml-2 md:mr-24">
                 <img
-                  src='logo.png'
-                  className='h-8 mr-3'
-                  alt='Stake Shirah Logo'
+                  src="logo.png"
+                  className="h-8 mr-3"
+                  alt="Stake Shirah Logo"
                 />
-                <div className='hidden md:visible'>
-                  <span className='font-Unbounded text-xl font-bold self-center text-black'>
+                <div className="hidden md:visible">
+                  <span className="font-Unbounded text-xl font-bold self-center text-black">
                     Stake
                   </span>
                   {` `}
-                  <span className='font-Unbounded text-xl font-bold self-center text-[#]'>
+                  <span className="font-Unbounded text-xl font-bold self-center text-[#]">
                     Shirah
                   </span>
                 </div>
@@ -308,11 +302,11 @@ function DesktopUI() {
                 </div> */}
               </a>
             </div>
-            <div className='flex items-center'>
-              <div className='hidden md:visible bg-grey-300 cursor-pointer'>
+            <div className="flex items-center">
+              <div className="hidden md:visible bg-grey-300 cursor-pointer">
                 <AiOutlineBell size={25}></AiOutlineBell>
               </div>
-              <div className='flex items-center ml-3'>
+              <div className="flex items-center ml-3">
                 <div>
                   <Web3Button></Web3Button>
                 </div>
@@ -323,12 +317,12 @@ function DesktopUI() {
       </nav>
 
       <aside
-        id='logo-sidebar'
-        className='fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700'
+        id="logo-sidebar"
+        className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
         // aria-label='Sidebar'
       >
-        <div className='h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800'>
-          <ul className='space-y-2 font-medium'>
+        <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+          <ul className="space-y-2 font-medium">
             {mylistx.map((val) => {
               return SideBarItem(
                 val.txt,
@@ -341,43 +335,43 @@ function DesktopUI() {
 
           {Affiliate && (
             <div
-              id='dropdown-cta'
-              className='p-4 mt-6 rounded-lg bg-blue-50 dark:bg-blue-900'
-              role='alert'
+              id="dropdown-cta"
+              className="p-4 mt-6 rounded-lg bg-blue-50 dark:bg-blue-900"
+              role="alert"
             >
-              <div className='flex items-center mb-3'>
-                <span className='bg-orange-100 text-orange-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-orange-200 dark:text-orange-900'>
+              <div className="flex items-center mb-3">
+                <span className="bg-orange-100 text-orange-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-orange-200 dark:text-orange-900">
                   Affiliate
                 </span>
                 <button
-                  type='button'
-                  className='ml-auto -mx-1.5 -my-1.5 bg-blue-50 inline-flex justify-center items-center w-6 h-6 text-blue-900 rounded-lg focus:ring-2 focus:ring-blue-400 p-1 hover:bg-blue-200 h-6 w-6 dark:bg-blue-900 dark:text-blue-400 dark:hover:bg-blue-800'
+                  type="button"
+                  className="ml-auto -mx-1.5 -my-1.5 bg-blue-50 inline-flex justify-center items-center w-6 h-6 text-blue-900 rounded-lg focus:ring-2 focus:ring-blue-400 p-1 hover:bg-blue-200 h-6 w-6 dark:bg-blue-900 dark:text-blue-400 dark:hover:bg-blue-800"
                   onClick={() => setAffiliate(false)}
                 >
-                  <span className='sr-only'>Close</span>
+                  <span className="sr-only">Close</span>
                   <svg
-                    className='w-2.5 h-2.5'
-                    aria-hidden='true'
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='none'
-                    viewBox='0 0 14 14'
+                    className="w-2.5 h-2.5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 14 14"
                   >
                     <path
-                      stroke='currentColor'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='2'
-                      d='m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6'
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
                     />
                   </svg>
                 </button>
               </div>
-              <p className='mb-3 text-sm text-blue-800 dark:text-blue-400'>
-                Share Your link and earn instantly on every investment up to 7%
+              <p className="mb-3 text-sm text-blue-800 dark:text-blue-400">
+                Share Your link and earn instantly on every investment up to 11%
               </p>
               <div
-                className='cursor-pointer text-sm text-blue-800 underline font-medium hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300'
-                onClick={() => SetPage('Share & earn')}
+                className="cursor-pointer text-sm text-blue-800 underline font-medium hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+                onClick={() => SetPage("Share & earn")}
               >
                 Share Now
               </div>
@@ -386,11 +380,11 @@ function DesktopUI() {
         </div>
       </aside>
 
-      <div className='p-4 sm:ml-64'>
-        <div className='p-4 mt-20 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700'>
+      <div className="p-4 sm:ml-64">
+        <div className="p-4 mt-20 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
           {!isloading && isConnected && getCurrentPage()}
           {isloading && (
-            <div className='flex flex-col items-center'>
+            <div className="flex flex-col items-center">
               <Spinner></Spinner>
             </div>
           )}
@@ -403,17 +397,17 @@ function DesktopUI() {
 export default DesktopUI;
 
 function DashBoard({ status }: { status: UserStats }) {
-  const [tab, setTab] = useState('Invest');
-  const [modalTitle, setTitle] = useState('');
+  const [tab, setTab] = useState("Invest");
+  const [modalTitle, setTitle] = useState("");
   const [showDialog, setShowDialog] = useState(false);
   const [myModal, setModal] = useState(null);
   return (
-    <div className=''>
+    <div className="">
       {showDialog && (
         <Modal
           show={showDialog}
-          position={'center'}
-          size={'md'}
+          position={"center"}
+          size={"md"}
           dismissible={true}
           onClose={() => setShowDialog(false)}
         >
@@ -422,53 +416,53 @@ function DashBoard({ status }: { status: UserStats }) {
         </Modal>
       )}
       <div>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-4'>
-          <div className='flex flex-row p-2 gap-2 items-center justify-start h-28 rounded bg-gray-50 dark:bg-gray-800'>
-            <div className='bg-blue-300 p-2 rounded-full'>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div className="flex flex-row p-2 gap-2 items-center justify-start h-28 rounded bg-gray-50 dark:bg-gray-800">
+            <div className="bg-blue-300 p-2 rounded-full">
               <FaDollarSign size={20}></FaDollarSign>
             </div>
-            <div className='flex flex-col'>
+            <div className="flex flex-col">
               <div>
-                <p className='text-xl font-semibold font-poppins text-gray-500'>
+                <p className="text-xl font-semibold font-poppins text-gray-500">
                   Available Balance
                 </p>
               </div>
-              <div className='flex flex-row justify-between items-center'>
-                <div className='text-3xl font-bold'>{status.profit} BNB</div>
+              <div className="flex flex-row justify-between items-center">
+                <div className="text-3xl font-bold">{status.profit} BNB</div>
               </div>
               <div>~ 0 $</div>
             </div>
           </div>
-          <div className='flex flex-row p-2 gap-2 items-center justify-start h-28 rounded bg-gray-50 dark:bg-gray-800'>
-            <div className='bg-green-300 p-2 rounded-full'>
+          <div className="flex flex-row p-2 gap-2 items-center justify-start h-28 rounded bg-gray-50 dark:bg-gray-800">
+            <div className="bg-green-300 p-2 rounded-full">
               <FaArrowDown size={20}></FaArrowDown>
             </div>
-            <div className='flex flex-col'>
+            <div className="flex flex-col">
               <div>
-                <p className='text-xl font-semibold font-poppins text-gray-500'>
+                <p className="text-xl font-semibold font-poppins text-gray-500">
                   Deposits
                 </p>
               </div>
-              <div className='flex flex-row justify-between items-center'>
-                <div className='text-3xl font-bold'>
+              <div className="flex flex-row justify-between items-center">
+                <div className="text-3xl font-bold">
                   {`${status.getUserTotalDeposits}`} BNB
                 </div>
               </div>
               <div>~ 0 $</div>
             </div>
           </div>
-          <div className='flex flex-row p-2 gap-2 items-center justify-start h-28 rounded bg-gray-50 dark:bg-gray-800'>
-            <div className='bg-red-300 p-2 rounded-full'>
+          <div className="flex flex-row p-2 gap-2 items-center justify-start h-28 rounded bg-gray-50 dark:bg-gray-800">
+            <div className="bg-red-300 p-2 rounded-full">
               <FaArrowUp size={20}></FaArrowUp>
             </div>
-            <div className='flex flex-col'>
+            <div className="flex flex-col">
               <div>
-                <p className='text-xl font-semibold font-poppins text-gray-500'>
+                <p className="text-xl font-semibold font-poppins text-gray-500">
                   Withdrawals
                 </p>
               </div>
-              <div className='flex flex-row justify-between items-center'>
-                <div className='text-3xl font-bold'>
+              <div className="flex flex-row justify-between items-center">
+                <div className="text-3xl font-bold">
                   {status.getUserTotalWithdrawn} BNB
                 </div>
               </div>
@@ -476,16 +470,16 @@ function DashBoard({ status }: { status: UserStats }) {
             </div>
           </div>
         </div>
-        <div className='grid grid-cols-1 gap-4 mb-4'>
-          <div className='flex flex-row p-2 gap-2 items-center justify-center min-h-72 rounded bg-gray-50 dark:bg-gray-800'>
-            <div className='grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center p-5'>
+        <div className="grid grid-cols-1 gap-4 mb-4">
+          <div className="flex flex-row p-2 gap-2 items-center justify-center min-h-72 rounded bg-gray-50 dark:bg-gray-800">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center p-5">
               {Object.entries([
                 {
-                  title: 'Deposit',
+                  title: "Deposit",
                   icon: (
                     <AiOutlinePlusCircle
                       size={35}
-                      color='#623CE7'
+                      color="#623CE7"
                     ></AiOutlinePlusCircle>
                   ),
                   widget: (
@@ -493,7 +487,7 @@ function DashBoard({ status }: { status: UserStats }) {
                   ),
                 },
                 {
-                  title: 'Withdraw',
+                  title: "Withdraw",
                   icon: <AiOutlineArrowDown size={35}></AiOutlineArrowDown>,
                   widget: (
                     <WithdrawDialog
@@ -502,10 +496,10 @@ function DashBoard({ status }: { status: UserStats }) {
                   ),
                 },
                 {
-                  title: 'Capital',
+                  title: "Capital",
                   icon: (
                     <AiOutlineDollar
-                      color='#623CE7'
+                      color="#623CE7"
                       size={35}
                     ></AiOutlineDollar>
                   ),
@@ -516,14 +510,28 @@ function DashBoard({ status }: { status: UserStats }) {
                   ),
                 },
                 {
-                  title: 'Reinvest',
+                  title: "Reinvest",
                   icon: (
                     <TiArrowRepeatOutline
-                      color='#25D366'
+                      color="#25D366"
                       size={35}
                     ></TiArrowRepeatOutline>
                   ),
-                  widget: <ReinvestD></ReinvestD>,
+                  widget: <ReinvestD
+                  onCancel={() => setShowDialog(false)}
+                  ></ReinvestD>,
+                },
+                {
+                  title: "Upline Partner",
+                  icon: (
+                    <AiOutlineArrowUp
+                      color="#25D366"
+                      size={35}
+                    ></AiOutlineArrowUp>
+                  ),
+                  widget: <UplinePartner
+                  onCancel={() => setShowDialog(false)}
+                  ></UplinePartner>,
                 },
               ]).map((val) => {
                 return (
@@ -533,7 +541,7 @@ function DashBoard({ status }: { status: UserStats }) {
                       setShowDialog(true);
                       setModal(val[1].widget);
                     }}
-                    className='flex flex-col w-72 md:w-56 cursor-pointer shadow-md font-poppins text-[#1b1b1b] font-semibold text-xl p-4 hover:bg-gray-300 bg-white items-center'
+                    className="flex flex-col w-72 md:w-56 cursor-pointer shadow-md font-poppins text-[#1b1b1b] font-semibold text-xl p-4 hover:bg-gray-300 bg-white items-center"
                     key={`${val[0]}`}
                   >
                     {val[1].icon}
@@ -544,12 +552,12 @@ function DashBoard({ status }: { status: UserStats }) {
             </div>
           </div>
         </div>
-        <div className='grid grid-cols-1 gap-4 mb-4'>
-          <div className='flex flex-row p-2 gap-2 items-start justify-start min-h-72 rounded bg-gray-50 dark:bg-gray-800'>
+        <div className="grid grid-cols-1 gap-4 mb-4">
+          <div className="flex flex-row p-2 gap-2 items-start justify-start min-h-72 rounded bg-gray-50 dark:bg-gray-800">
             <TxPage status={status}></TxPage>
           </div>
         </div>
-        <div className='grid grid-cols-2 gap-4 mb-4'></div>
+        <div className="grid grid-cols-2 gap-4 mb-4"></div>
       </div>
     </div>
   );

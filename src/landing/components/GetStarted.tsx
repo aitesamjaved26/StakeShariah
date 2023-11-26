@@ -1,6 +1,7 @@
+import React from 'react'
 import styles from '../../style';
 import { arrowUp } from '../../assets';
-import { useWeb3Modal } from '@web3modal/wagmi/react';
+import { useWeb3Modal } from '@web3modal/wagmi/react'
 
 function GetStarted() {
   const { open } = useWeb3Modal();

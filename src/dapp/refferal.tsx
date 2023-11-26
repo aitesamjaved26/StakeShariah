@@ -19,7 +19,7 @@ function RefferalUI({ status }: { status: UserStats }) {
               <div className='flex flex-col h-fit w-fit p-4 gap-5 shadow-2xl bg-white rounded-2xl'>
                 <div>
                   <div className='text-2xl font-bold font-poppins'>
-                    Affiliate
+                    Share & Earn
                   </div>
                   <div>
                     Earn crypto rewards by referring friends! Share your unique

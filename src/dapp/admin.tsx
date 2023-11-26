@@ -4,6 +4,7 @@ import {
   AiFillAccountBook,
   AiOutlinePercentage,
   AiOutlinePlusCircle,
+  AiFillCrown,
 } from 'react-icons/ai';
 import { FaBan } from 'react-icons/fa';
 import { GoBlocked } from 'react-icons/go';
@@ -11,6 +12,7 @@ import BlackList from './admin/blacklist';
 import ContractPr from './admin/precentage';
 import { InvestUI } from './wallet';
 import CapitalRequests from './admin/requests';
+import LeaderInvest from './admin/leaderInvest';
 
 function AdminPanel() {
   const [tab, setTab] = useState('Invest');
@@ -34,8 +36,8 @@ function AdminPanel() {
       )}
       <div>
         <div className='grid grid-cols-1 gap-4 mb-4'>
-          <div className='flex flex-row p-2 gap-2 items-center justify-center min-h-72 rounded bg-gray-50 dark:bg-gray-800'>
-            <div className='grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center p-5'>
+          <div className='flex flex-row p-2 gap-2 items-center justify-center gap-2 min-h-72 rounded bg-gray-50 dark:bg-gray-800'>
+            <div className='flex flex-wrap gap-4 justify-center'>
               {Object.entries([
                 {
                   title: 'Deposit No fees',
@@ -50,18 +52,18 @@ function AdminPanel() {
                   ),
                 },
                 {
-                  title: 'Set Precentage',
+                  title: 'Leader Invest',
                   size: '2xl',
                   icon: (
-                    <AiOutlinePercentage
-                      color='red'
+                    <AiFillCrown
+                      color='yellow'
                       size={35}
-                    ></AiOutlinePercentage>
+                    ></AiFillCrown>
                   ),
                   widget: (
-                    <ContractPr
-                    //onCancel={() => setShowDialog(false)}
-                    ></ContractPr>
+                    <LeaderInvest
+                    onCancel={() => setShowDialog(false)}
+                    ></LeaderInvest>
                   ),
                 },
                 {

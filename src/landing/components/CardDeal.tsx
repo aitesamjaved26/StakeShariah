@@ -14,7 +14,7 @@ const CardDeal = () => (
         instantly .
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-        Share Your link and earn instantly on every investment up to 7%, once
+        Share Your link and earn instantly on every investment up to 11%, once
         they use your link you will earn everytime they invest.
       </p>
 

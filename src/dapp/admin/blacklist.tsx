@@ -31,7 +31,7 @@ function BlackList({
         abi: contractABI,
         //@ts-ignore
         //@ts-ignore
-        functionName: 'blockUser',
+        functionName: 'blacklistAddress',
         //@ts-ignore
         account: address,
         //@ts-ignore
@@ -59,7 +59,7 @@ function BlackList({
         abi: contractABI,
         //@ts-ignore
         //@ts-ignore
-        functionName: 'unblockUser',
+        functionName: 'unblacklistAddress',
         //@ts-ignore
         account: address,
         //@ts-ignore
