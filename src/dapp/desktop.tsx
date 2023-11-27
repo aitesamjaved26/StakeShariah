@@ -84,7 +84,7 @@ function DesktopUI() {
       const val = await readValues(address);
       console.log("val", val);
       setStatus(val);
-    }
+    };
     if (isConnected && chain?.id != 97) {
       setBanner(true);
     } else {
@@ -96,7 +96,7 @@ function DesktopUI() {
       console.log("isConnected", isConnected);
       getVal();
       readValues(address).then((value) => {
-        console.log("value" ,value);
+        console.log("value", value);
         setTimeout(() => {
           SetLoading(false);
 
@@ -139,7 +139,7 @@ function DesktopUI() {
       icon: <AiOutlineQuestion size={22}></AiOutlineQuestion>,
       txt: "FAQS",
     },
-/*     {
+    /*     {
       href: "https://t.me/StakeShariah",
       icon: <AiOutlineMail size={22}></AiOutlineMail>,
       txt: "Support",
@@ -401,7 +401,19 @@ function DashBoard({ status }: { status: UserStats }) {
   const [modalTitle, setTitle] = useState("");
   const [showDialog, setShowDialog] = useState(false);
   const [myModal, setModal] = useState(null);
-  console.log("status", status);
+  const [bnbPrice, setBnbPrice] = useState(0);
+
+  useEffect(() => {
+    fetch("https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd")
+      .then((res) => res.json())
+      .then((res) => {
+        setBnbPrice(res.binancecoin.usd);
+      });
+  }, []);
+  
+
+  console.log("bnbPrice", bnbPrice)
+
   return (
     <div className="">
       {showDialog && (
@@ -425,13 +437,15 @@ function DashBoard({ status }: { status: UserStats }) {
             <div className="flex flex-col">
               <div>
                 <p className="text-xl font-semibold font-poppins text-gray-500">
-                Available Withdraw
+                  Available Withdraw
                 </p>
               </div>
               <div className="flex flex-row justify-between items-center">
-                <div className="text-3xl font-bold">{parseFloat(status.getUserAvailable).toFixed(4)} BNB</div>
+                <div className="text-3xl font-bold">
+                  {parseFloat(status.getUserAvailable).toFixed(4)} BNB
+                </div>
               </div>
-              <div>~ 0 $</div>
+              <div>~ {(parseFloat(status.getUserAvailable)*bnbPrice).toFixed(2)} $</div>
             </div>
           </div>
           <div className="flex flex-row p-2 gap-2 items-center justify-start h-28 rounded bg-gray-50 dark:bg-gray-800">
@@ -449,7 +463,7 @@ function DashBoard({ status }: { status: UserStats }) {
                   {`${parseFloat(status.getUserTotalDeposits).toFixed(4)}`} BNB
                 </div>
               </div>
-              <div>~ 0 $</div>
+              <div>~ {(parseFloat(status.getUserTotalDeposits)*bnbPrice).toFixed(2)} $</div>
             </div>
           </div>
           <div className="flex flex-row p-2 gap-2 items-center justify-start h-28 rounded bg-gray-50 dark:bg-gray-800">
@@ -467,7 +481,7 @@ function DashBoard({ status }: { status: UserStats }) {
                   {parseFloat(status.getUserTotalWithdrawn).toFixed(4)} BNB
                 </div>
               </div>
-              <div>~ 0 $</div>
+              <div>~ {(parseFloat(status.getUserTotalWithdrawn)*bnbPrice).toFixed(2)} $</div>
             </div>
           </div>
         </div>
@@ -518,9 +532,11 @@ function DashBoard({ status }: { status: UserStats }) {
                       size={35}
                     ></TiArrowRepeatOutline>
                   ),
-                  widget: <ReinvestD
-                  onCancel={() => setShowDialog(false)}
-                  ></ReinvestD>,
+                  widget: (
+                    <ReinvestD
+                      onCancel={() => setShowDialog(false)}
+                    ></ReinvestD>
+                  ),
                 },
                 {
                   title: "Upline Partner",
@@ -530,9 +546,11 @@ function DashBoard({ status }: { status: UserStats }) {
                       size={35}
                     ></AiOutlineArrowUp>
                   ),
-                  widget: <UplinePartner
-                  onCancel={() => setShowDialog(false)}
-                  ></UplinePartner>,
+                  widget: (
+                    <UplinePartner
+                      onCancel={() => setShowDialog(false)}
+                    ></UplinePartner>
+                  ),
                 },
               ]).map((val) => {
                 return (

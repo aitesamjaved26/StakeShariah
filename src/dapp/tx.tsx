@@ -18,7 +18,7 @@ function TxPage({ status }: { status: UserStats }) {
   const apiKey = 'ab8ea359-3f69-43a3-8a97-b69174799ceb';
   const bnbSymbol = 'binancecoin';
 
-  async function getCoinPrice(coinsString) {
+ /*  async function getCoinPrice(coinsString) {
     const url =
       'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest';
 
@@ -45,9 +45,9 @@ function TxPage({ status }: { status: UserStats }) {
       console.error('Error:', error);
       throw error;
     }
-  }
+  } */
   useEffect(() => {
-    getCoinPrice(`BNB`);
+    //getCoinPrice(`BNB`);
   });
   return (
     <div className='min-w-full'>

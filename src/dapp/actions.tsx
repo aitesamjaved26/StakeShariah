@@ -271,9 +271,13 @@ export function UplinePartner({ onCancel }) {
           <div className="text-black mb-5 text-xl">Loading...</div>
         )}
         {upline == "0x0000000000000000000000000000000000000000" ? (
-          <div className="text-black mb-5 text-xl">No upline account found</div>
+          <div className="text-black mb-5 text-lg">No upline account found</div>
         ) : (
-          <div className="text-black mb-5 text-xl">{upline}</div>
+          <div className="text-black mb-5 text-lg">
+            <a href={`https://bscscan.com/address/${upline}`}>
+              {upline.slice(0, 6) + "..." + upline.slice(-4)}
+            </a>
+          </div>
         )}
       </div>
     </div>
