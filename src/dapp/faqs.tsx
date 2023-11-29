@@ -10,7 +10,7 @@ function FAQSection() {
     },
     {
       title: `What is the minimum investment amount?`,
-      content: 'The minimum investment amount is 0.03 BNB (BEP-20)',
+      content: 'The minimum investment amount is 0.04 BNB (BEP-20)',
     },
 
     {
