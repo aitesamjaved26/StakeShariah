@@ -524,20 +524,20 @@ function DashBoard({ status }: { status: UserStats }) {
                     ></CapitalWithdrawD>
                   ),
                 },
-                {
-                  title: "Reinvest",
-                  icon: (
-                    <TiArrowRepeatOutline
-                      color="#25D366"
-                      size={35}
-                    ></TiArrowRepeatOutline>
-                  ),
-                  widget: (
-                    <ReinvestD
-                      onCancel={() => setShowDialog(false)}
-                    ></ReinvestD>
-                  ),
-                },
+                // {
+                //   title: "Reinvest",
+                //   icon: (
+                //     <TiArrowRepeatOutline
+                //       color="#25D366"
+                //       size={35}
+                //     ></TiArrowRepeatOutline>
+                //   ),
+                //   widget: (
+                //     <ReinvestD
+                //       onCancel={() => setShowDialog(false)}
+                //     ></ReinvestD>
+                //   ),
+                // },
                 {
                   title: "Upline Partner",
                   icon: (
