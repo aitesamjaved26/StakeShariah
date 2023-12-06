@@ -254,7 +254,7 @@ export async function Reinvest(selectedAccount) {
 
 export async function deposit(account, refferal, amount, onCancel) {
   console.log(amount);
-  if (amount == null || amount === '' || amount < 0.01 || amount == 0) {
+  if (amount == null || amount === '' || amount < 0.03 || amount == 0) {
     toast.error('minimum amount is 0.03 BNB');
   } else {
     await approveAmount(amount, account, refferal, onCancel);
@@ -319,14 +319,14 @@ export function AccountUI({ status }: { status: UserStats }) {
             >
               Withdraw
             </button>
-            {/* <button
+            <button
               className={buttonStyle}
               //className={styles.stakeButton3}
               onClick={() => handleShowDialog('Re-invest')}
               // onClick={() => withdrawToken(account)}
             >
               Re-invest
-            </button> */}
+            </button>
             <button
               className={buttonStyle}
               //className={styles.stakeButton2}
