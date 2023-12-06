@@ -319,14 +319,14 @@ export function AccountUI({ status }: { status: UserStats }) {
             >
               Withdraw
             </button>
-            <button
+            {/* <button
               className={buttonStyle}
               //className={styles.stakeButton3}
               onClick={() => handleShowDialog('Re-invest')}
               // onClick={() => withdrawToken(account)}
             >
               Re-invest
-            </button>
+            </button> */}
             <button
               className={buttonStyle}
               //className={styles.stakeButton2}
@@ -348,7 +348,7 @@ export function InvestUI({ onCancel }) {
 
   const notes = [
     'Do not forget about blockchain fee! You should have 0.0002 - 0.0004 BNB more in your wallet, or your transaction will decline.',
-    'Minimum Staking Amount 0.01 BNB',
+    'Minimum Staking Amount 0.03 BNB',
     'Your staking will be activated after 1 confirmation in blockchain',
     'Withdrawable rewards come instantly to your secure wallet balance, which is accessible only to YOU',
   ];
