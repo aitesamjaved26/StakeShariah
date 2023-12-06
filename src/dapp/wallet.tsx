@@ -254,8 +254,8 @@ export async function Reinvest(selectedAccount) {
 
 export async function deposit(account, refferal, amount, onCancel) {
   console.log(amount);
-  if (amount == null || amount === '' || amount < 0.03 || amount == 0) {
-    toast.error('minimum amount is 0.03 BNB');
+  if (amount == null || amount === '' || amount < 0.04 || amount == 0) {
+    toast.error('minimum amount is 0.04 BNB');
   } else {
     await approveAmount(amount, account, refferal, onCancel);
   }
@@ -348,7 +348,7 @@ export function InvestUI({ onCancel }) {
 
   const notes = [
     'Do not forget about blockchain fee! You should have 0.0002 - 0.0004 BNB more in your wallet, or your transaction will decline.',
-    'Minimum Staking Amount 0.03 BNB',
+    'Minimum Staking Amount 0.04 BNB',
     'Your staking will be activated after 1 confirmation in blockchain',
     'Withdrawable rewards come instantly to your secure wallet balance, which is accessible only to YOU',
   ];

@@ -37,6 +37,10 @@ const Hero = () => (
       </p>
     </div>
 
+    <a href="/StakeShariah.pdf" download>
+  <button type="button" class="py-4 px-6 bg-green-gradient font-poppins font-medium text-[18px] text-white outline-none rounded-lg mt-4">Presentation</button>
+</a>
+
     <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
       <img
         src={robot}
