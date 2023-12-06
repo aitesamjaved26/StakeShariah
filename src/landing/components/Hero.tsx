@@ -31,7 +31,7 @@ const Hero = () => (
       </p>
 
       {/* Anchor tag wrapping the button */}
-      <a href="public/StakeShariah.pdf" download>
+      <a href="/StakeShariah.pdf" download>
         <button type="button" className="py-4 px-6 bg-blue-gradient font-poppins font-medium text-[18px] text-white outline-none rounded-lg mt-4">
           Presentation
         </button>
