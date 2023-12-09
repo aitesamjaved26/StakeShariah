@@ -376,7 +376,7 @@ function DesktopUI() {
                 </button>
               </div>
               <p className='mb-3 text-sm text-blue-800 dark:text-blue-400'>
-                Share Your link and earn instantly on every investment up to 8%
+                Share Your link and earn instantly on every investment up to 11%
               </p>
               <div
                 className='cursor-pointer text-sm text-blue-800 underline font-medium hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300'
