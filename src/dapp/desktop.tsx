@@ -118,7 +118,7 @@ function DesktopUI() {
       txt: 'Share & earn',
     },
     {
-      href: `https://bscscan.com/address/${contractAddress}`,
+      href: `https://bscscan.com/address/0x8215c949f2025b84629041903ade8394f0a080c6`,
       icon: <FaFileContract size={22}></FaFileContract>,
       txt: 'Contract',
     },
@@ -165,7 +165,7 @@ function DesktopUI() {
       txt: 'Share & earn',
     },
     {
-      href: `https://bscscan.com/address/${contractAddress}`,
+      href: `https://bscscan.com/address/0x8215c949f2025b84629041903ade8394f0a080c6`,
       icon: <FaFileContract size={22}></FaFileContract>,
       txt: 'Contract',
     },
