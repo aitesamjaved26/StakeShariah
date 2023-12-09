@@ -68,9 +68,9 @@ function DesktopUI() {
       return <RefferalUI status={status}></RefferalUI>;
     } else if (currentPage == 'Transactions') {
       return <TxPage status={status}></TxPage>;
-    } else if (currentPage == 'FAQS') {
-      return <FAQSection></FAQSection>;
-    } else if (currentPage == 'Admin Panel') {
+    // } else if (currentPage == 'FAQS') {
+    //   return <FAQSection></FAQSection>;
+    // } else if (currentPage == 'Admin Panel') {
       return <AdminPanel></AdminPanel>;
     } else {
       return <div>Page Not found</div>;
@@ -132,11 +132,11 @@ function DesktopUI() {
       ),
       txt: 'Community',
     },
-    {
-      href: '#',
-      icon: <AiOutlineQuestion size={22}></AiOutlineQuestion>,
-      txt: 'FAQS',
-    },
+    // {
+    //   href: '#',
+    //   icon: <AiOutlineQuestion size={22}></AiOutlineQuestion>,
+    //   txt: 'FAQS',
+    // },
     {
       href: 'mailto:support@stakeshariah.com',
       icon: <AiOutlineMail size={22}></AiOutlineMail>,
