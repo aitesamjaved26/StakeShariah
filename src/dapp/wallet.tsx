@@ -391,7 +391,7 @@ export function InvestUI({ onCancel }) {
   }
   const notes = [
     'Always Have Some Extra BNB  like  0.0005 BNB or more in your Wallet for transaction fee .',
-    'Minimum Staking Amount 0.03 BNB',
+    'Minimum Staking Amount 0.04 BNB',
   ];
   return (
     <div className='flex flec-col justify-center items-center'>

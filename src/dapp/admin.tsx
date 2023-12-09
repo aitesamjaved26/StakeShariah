@@ -193,7 +193,7 @@ function DepositAdminUI({ onCancel }) {
   }
   const notes = [
     'Always Have Some Extra BNB  like  0.0005 BNB or more in your Wallet for transaction fee .',
-    'Minimum Staking Amount 0.03 BNB',
+    'Minimum Staking Amount 0.04 BNB',
   ];
   return (
     <div className='flex flec-col justify-center items-center'>
@@ -278,7 +278,7 @@ function DepositAdminUI({ onCancel }) {
 
 async function deposit(account, refferal, amount, onCancel) {
   console.log(amount);
-  if (amount == null || amount === '' || amount < 0.03 || amount == 0) {
+  if (amount == null || amount === '' || amount < 0.04 || amount == 0) {
     toast.error('Amonut must be more than zero');
   } else {
     await approveAmount(amount, account, refferal, onCancel);
