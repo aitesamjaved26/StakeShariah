@@ -40,7 +40,15 @@ const Footer = () => (
         ))}
       </div>
       </div> */}
+      <div>
+        <a href="/StakeShariah.pdf" download>
+          <button type="button" className="py-4 px-6 bg-green-gradient font-poppins font-medium text-[18px] text-white outline-none rounded-lg mt-4">
+            Presentation
+          </button>
+        </a>
+
       </div>
+    </div>
 
     <div className='w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3f3r45]'>
       <p className='font-poppins font-normal text-center text-[18px] leading-[27px] text-white'>
@@ -54,9 +62,8 @@ const Footer = () => (
             src={social.icon}
             link={social.link}
             alt={social.id}
-            className={`w-[21px] h-[21px] object-contain cursor-pointer ${
-              index !== socialMedia.length - 1 ? 'mr-2' : 'mr-0'
-            }`}
+            className={`w-[21px] h-[21px] object-contain cursor-pointer ${index !== socialMedia.length - 1 ? 'mr-2' : 'mr-0'
+              }`}
           />
         ))}
       </div>
