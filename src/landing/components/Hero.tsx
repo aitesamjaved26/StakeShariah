@@ -2,10 +2,16 @@ import React from 'react';
 import { robot } from '../../assets';
 import styles from '../../style';
 import GetStarted from './GetStarted';
+// import Typical from 'react-typical'
 
 const Hero = () => (
-  <section id='home' className={`flex md:flex-row flex-col ${styles.paddingY}`}>
-    <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
+  <section
+    id='home'
+    className={`flex md:flex-row flex-col ${styles.paddingY}`}
+  >
+    <div
+      className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}
+    >
       <div className='text-5xl text-white text-bold'></div>
 
       {/* The Next Generation Payment Part */}
@@ -29,17 +35,14 @@ const Hero = () => (
         Invest with peace of mind in Stake Shariah - where profits are shared
         fairly!
       </p>
-
-      {/* Anchor tag wrapping the button */}
-      <a href="/StakeShariah.pdf" download>
-        <button type="button" className="py-4 px-6 bg-blue-gradient font-poppins font-medium text-[18px] text-white outline-none rounded-lg mt-4">
-          Presentation
-        </button>
-      </a>
     </div>
 
     <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
-      <img src={robot} alt='billing' className='w-[100%] relatinve z-[5]' />
+      <img
+        src={robot}
+        alt='billing'
+        className='w-[100%] relatinve z-[5]'
+      />
       <div className='absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient' />
       <div className='absolute z-[1] w-[80%] h-[80%] rounded-full bottom-40 white__gradient' />
       <div className='absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient' />

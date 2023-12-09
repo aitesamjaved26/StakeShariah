@@ -7,7 +7,7 @@ function TxWidget({ value, dollar, date, bnbPrice }) {
     <div className='flex flex-row justify-between items-start p-2'>
       <div className='flex flex-col'>
         <div className='font-semibold text-2xl'>{value} BNB</div>
-        <div className=''>~ $5000</div>
+        <div className=''>~ {Number(value) * bnbPrice}</div>
       </div>
       <div>{date}</div>
     </div>
@@ -15,46 +15,13 @@ function TxWidget({ value, dollar, date, bnbPrice }) {
 }
 function TxPage({ status }: { status: UserStats }) {
   const [currentTab, setTab] = useState('Deposits');
-  const apiKey = 'ab8ea359-3f69-43a3-8a97-b69174799ceb';
-  const bnbSymbol = 'binancecoin';
 
- /*  async function getCoinPrice(coinsString) {
-    const url =
-      'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest';
-
-    const requestOptions = {
-      method: 'GET',
-      headers: {
-        'X-CMC_PRO_API_KEY': apiKey,
-      },
-      mode: 'no-cors', // Set 'no-cors' mode to bypass CORS
-    };
-
-    const queryParams = new URLSearchParams({
-      symbol: coinsString,
-    });
-
-    try {
-      const response = await fetch(
-        `${url}?${queryParams}`,
-        requestOptions as any
-      );
-      // Note: Since we are using 'no-cors' mode, you cannot access the response data directly.
-      console.log('Request sent successfully.'); // This will be logged, but response data will not be accessible.
-    } catch (error) {
-      console.error('Error:', error);
-      throw error;
-    }
-  } */
-  useEffect(() => {
-    //getCoinPrice(`BNB`);
-  });
   return (
     <div className='min-w-full'>
       <div className='flex flex-row justify-start items-center'>
         <div className=''>
           <ul className='flex -mb-px'>
-            {Object.entries(['Deposits', 'Withdrawals']).map((val) => {
+            {Object.entries(['Deposits']).map((val) => {
               const activeStyle =
                 'cursor-pointer inline-block p-4 text-blue-600 text-lg border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500';
               const inActiveStyle =
@@ -79,22 +46,20 @@ function TxPage({ status }: { status: UserStats }) {
         </div>
       </div>
       <div className='mt-5 w-full'>
-        {currentTab != 'Deposits' && (!status.withdrawals || status.withdrawals.length == 0) && (
+        {currentTab != 'Deposits' && status.withdrawals.length == 0 && (
           <div className='flex flex-col font-poppins font-semibold text-2xl h-64 justify-center items-center'>
             No Transcations yet!
           </div>
         )}
-        {currentTab == 'Deposits' && (!status.deposits || status.deposits.length == 0) && (
+        {currentTab == 'Deposits' && status.deposits.length == 0 && (
           <div className='flex flex-col font-poppins font-semibold text-2xl h-64 justify-center items-center'>
             No Transcations yet!
           </div>
         )}
 
-        {Object.entries(
-          currentTab == 'Deposits' ? status.deposits : status.withdrawals
-        ).map((val) => {
+        {Object.entries(status.deposits).map((val) => {
           const timestampFromSmartContract = ethers.BigNumber.from(
-            val[1]['timestamp']
+            val[1]['start']
           ); // The timestamp from the smart contract as a string
           const timestampInMilliseconds = timestampFromSmartContract.mul(1000);
 
@@ -121,13 +86,13 @@ function TxPage({ status }: { status: UserStats }) {
           const minutes = String(date.getMinutes()).padStart(2, '0');
           return (
             <TxWidget
-              bnbPrice={``}
+              bnbPrice={213}
               key={`{tx_${val}}`}
               date={`${monthName} ${day} ${year} ${hours}:${minutes}`}
               value={`${Number(
                 ethers.utils.formatEther(val[1]['amount'] as any)
               ).toFixed(2)}`}
-              dollar={`5000$`}
+              dollar={`$`}
             ></TxWidget>
           );
         })}

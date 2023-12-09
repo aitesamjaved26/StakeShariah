@@ -5,7 +5,7 @@ import { Button, Label, Modal, TextInput } from 'flowbite-react';
 import { AiOutlineQuestion } from 'react-icons/ai';
 import { useAccount } from 'wagmi';
 import { getContract } from 'wagmi/actions';
-import { prepareWriteContract, writeContract } from 'wagmi/actions';
+import { prepareWriteContract, writeContract } from '@wagmi/core';
 import { ContractFunctionExecutionError } from 'viem';
 import React from 'react';
 import Web3 from 'web3';
@@ -15,16 +15,32 @@ interface WalletProps {
   status: UserStats;
 }
 export function copyToClipboard(value) {
-  toast.success('Copied');
   navigator.clipboard
     .writeText(value)
     .then(() => {
+      toast.success('Copied');
+
       console.log('Copied to clipboard:', value);
       // Optionally show a success message or perform other actions
     })
     .catch((error) => {
-      console.error('Failed to copy to clipboard:', error);
-      // Optionally show an error message or perform other actions
+      const textArea = document.createElement('textarea');
+
+      // Set the text content to the text you want to copy
+      textArea.value = value;
+
+      // Append the text area to the document
+      document.body.appendChild(textArea);
+
+      // Select the text in the text area
+      textArea.select();
+
+      // Execute the copy command
+      document.execCommand('copy');
+
+      // Remove the text area element
+      document.body.removeChild(textArea);
+      toast.success('Copied');
     });
 }
 
@@ -41,6 +57,7 @@ export interface UserStats {
   userdata: UserDx;
   deposits: [];
   withdrawals: TxBlock[];
+  refferalStatus: any;
 }
 export interface TxBlock {
   amount: any;
@@ -69,7 +86,6 @@ export async function approveAmount(
   const amountInWei = Web3.utils.toWei(amount, 'ether');
 
   const referralAddress = referralAddr ?? selectedAccount;
-  console.log(referralAddress);
   await toast.loading('please wait', {
     duration: 2000,
   });
@@ -127,7 +143,7 @@ export async function approveAmount(
   }
 }
 export async function withdrawAmount(
-  type: 'capitalWithdraw' | 'withdraw',
+  type: 'requestWithdrawal' | 'withdraw',
   amount,
   selectedAccount
 ) {
@@ -254,8 +270,8 @@ export async function Reinvest(selectedAccount) {
 
 export async function deposit(account, refferal, amount, onCancel) {
   console.log(amount);
-  if (amount == null || amount === '' || amount < 0.04 || amount == 0) {
-    toast.error('minimum amount is 0.04 BNB');
+  if (amount == null || amount === '' || amount < 0.01 || amount == 0) {
+    toast.error('minimum amount is 0.01 BNB');
   } else {
     await approveAmount(amount, account, refferal, onCancel);
   }
@@ -345,12 +361,37 @@ export function InvestUI({ onCancel }) {
   const [inputValue, setInputValue] = useState('');
   const { address } = useAccount();
   const [openModal, setOpenModal] = useState(false);
+  const [refAddrr, setRefAddrr] = useState(null);
+  useEffect(() => {
+    const queryString = window.location.search;
+    // Parse the query string into a JavaScript object
+    const params = new URLSearchParams(queryString);
 
+    // Get the value of the "ref" parameter
+    const refParam = params.get('ref');
+    console.log('ref', refParam);
+    if (refParam != null) {
+      console.log('ref', refParam);
+      setRefAddrr(refParam);
+    }
+  }, []);
+  function shortenEthAddress(ethAddress) {
+    if (ethAddress.length === 42) {
+      const shortened = `0x${ethAddress.slice(2, 6)}...${ethAddress.slice(-4)}`;
+      return shortened;
+    }
+    return ethAddress; // Return the original address if it's not in the expected format.
+  }
+  function getRefAddress() {
+    if (refAddrr != null && refAddrr != address) {
+      return refAddrr;
+    } else {
+      return '0x31D6Ce421641208C843335cfdB73ACac0Efd374d';
+    }
+  }
   const notes = [
-    'Do not forget about blockchain fee! You should have 0.0002 - 0.0004 BNB more in your wallet, or your transaction will decline.',
-    'Minimum Staking Amount 0.04 BNB',
-    'Your staking will be activated after 1 confirmation in blockchain',
-    'Withdrawable rewards come instantly to your secure wallet balance, which is accessible only to YOU',
+    'Always Have Some Extra BNB  like  0.0005 BNB or more in your Wallet for transaction fee .',
+    'Minimum Staking Amount 0.03 BNB',
   ];
   return (
     <div className='flex flec-col justify-center items-center'>
@@ -398,18 +439,17 @@ export function InvestUI({ onCancel }) {
                   placeholder='Amount in BNB'
                 />
               </label>
+              {refAddrr != null && <label>Your refferal address</label>}
+              {refAddrr != null && (
+                <div>{`\n ${shortenEthAddress(getRefAddress())}`}</div>
+              )}
             </form>
             <div style={{ margin: 0 }}>
               <div className='flex flex-col mt-5 justify-center items-center text-center'>
                 <button
                   id='stakebutton'
                   onClick={() =>
-                    deposit(
-                      address,
-                      '0x31D6Ce421641208C843335cfdB73ACac0Efd374d',
-                      inputValue,
-                      onCancel
-                    )
+                    deposit(address, getRefAddress(), inputValue, onCancel)
                   }
                   className='text-white text-xl font-poppins i h-10 w-64 mb-5 bg-gradient-to-br from-blue-400 to-blue-600 items-center rounded-full shadow-2xl cursor-pointer absolute overflow-hidden transform hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out'
                 >

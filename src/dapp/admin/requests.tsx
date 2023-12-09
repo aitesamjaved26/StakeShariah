@@ -7,8 +7,8 @@ import {
 } from '../../models/contract';
 import React, { useEffect, useState } from 'react';
 import { readContracts } from 'wagmi';
-import { ethers } from 'ethers';
-import { prepareWriteContract, writeContract, getContract } from 'wagmi/actions';
+import { BigNumber, ethers } from 'ethers';
+import { prepareWriteContract, writeContract, getContract } from '@wagmi/core';
 
 import { toast } from 'react-hot-toast';
 import { ContractFunctionExecutionError } from 'viem';
@@ -17,18 +17,21 @@ async function getAllrequests() {
     address: contractAddress,
     abi: contractABI,
   };
-  var result = await readContracts({
-    contracts: [
-      {
-        ...myContract,
-        functionName: 'getWithdrawalRequests',
-        args: [],
-      },
-    ],
-  });
-  console.log(result[0]);
-  console.log(result[0].result);
-  return result[0].result;
+  try {
+    var result = await readContracts({
+      contracts: [
+        {
+          ...myContract,
+          functionName: 'getWithdrawalRequests',
+          args: [],
+        },
+      ],
+    });
+    console.log('allreq', result[0].result[0]);
+    return result[0].result;
+  } catch (e) {
+    toast.error(e);
+  }
 }
 async function ApproveRequest(requestId) {
   const contract = getContract({
@@ -49,12 +52,12 @@ async function ApproveRequest(requestId) {
       //@ts-ignore
       abi: contractABI,
       //@ts-ignore
-      //@ts-ignore
       functionName: 'approveCapitalWithdrawal',
       //@ts-ignore
       account: adminAddress,
       //@ts-ignore
       args: [requestId],
+      gas: gas,
     });
     console.log(request);
     const { hash } = await writeContract(request);

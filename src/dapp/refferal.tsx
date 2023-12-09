@@ -2,11 +2,21 @@ import { useAccount } from 'wagmi';
 import { UserStats, copyToClipboard } from './wallet';
 import React from 'react';
 import { card } from '../assets';
-import styles, { layout } from '../style';
-import { Button } from 'flowbite-react';
+import { layout } from '../style';
 
 function RefferalUI({ status }: { status: UserStats }) {
   const { address } = useAccount();
+  function getUserLevel(refs: number[]): number {
+    for (let i = 0; i < refs.length; i++) {
+      if (refs[i] > 0) {
+        // The first non-zero value in the array indicates the user's level
+        return i + 1; // Add 1 to convert from zero-based index to level number
+      }
+    }
+
+    // If all values are zero, the user is at level 0
+    return 0;
+  }
   return (
     <section
       id='share&earn'
@@ -27,10 +37,31 @@ function RefferalUI({ status }: { status: UserStats }) {
                   </div>
                   <div className='mt-5'>
                     <div className='text-xl font-semibold'>
-                      Your Referral rewards:
+                      Available Referral Rewards :
                     </div>
                     <div className='text-2xl font-bold font-poppins'>
-                      {`${status.getUserReferralsStats}`} BNB
+                      {`${status.refferalStatus['referralEarnings']}`} BNB
+                    </div>
+                  </div>
+                  <div className='mt-5'>
+                    <div className='text-xl font-semibold'>
+                      Total Referral rewards:
+                    </div>
+                    <div className='text-2xl font-bold font-poppins'>
+                      {`${status.refferalStatus['total']}`} BNB
+                    </div>
+                  </div>
+
+                  <div className='mt-5'>
+                    <div className='text-xl'>Refferal Levels : </div>
+                    <div className='text-2xl font-bold font-poppins'>
+                      Level1 : {`${status.refferalStatus['totalFriends'][0]}`}
+                    </div>
+                    <div className='text-2xl font-bold font-poppins'>
+                      Level2 : {`${status.refferalStatus['totalFriends'][1]}`}
+                    </div>
+                    <div className='text-2xl font-bold font-poppins'>
+                      Level3 : {`${status.refferalStatus['totalFriends'][2]}`}
                     </div>
                   </div>
                   <input

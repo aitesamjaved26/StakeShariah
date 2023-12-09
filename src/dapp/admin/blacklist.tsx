@@ -5,6 +5,7 @@ import { useAccount } from 'wagmi';
 import { prepareWriteContract, writeContract } from 'wagmi/actions';
 import { useState } from 'react';
 import React from 'react';
+import { toast } from 'react-hot-toast';
 
 function BlackList({
   onCancel,
@@ -17,7 +18,6 @@ function BlackList({
   const [usrAdd, setUsrAdd] = useState('');
 
   async function freeze(useraddr) {
-    console.log('hello');
     const contract = getContract({
       address: contractAddress as any,
       abi: contractABI,
@@ -40,6 +40,7 @@ function BlackList({
       console.log(request);
       const { hash } = await writeContract(request);
       onCancel();
+      toast.success('Address blocked');
     } catch (e) {
       console.log(e);
     }
@@ -68,6 +69,7 @@ function BlackList({
       console.log(request);
       const { hash } = await writeContract(request);
       onCancel();
+      toast.success('Address unblocked');
     } catch (e) {
       console.log(e);
     }

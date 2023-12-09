@@ -1,8 +1,6 @@
-import React from "react";
-import styles from "./style";
-import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
-import { WagmiConfig, useAccount } from "wagmi";
-import { bsc } from "viem/chains";
+import React from 'react';
+import styles from './style';
+import { configureChains, createConfig, useAccount, WagmiConfig } from 'wagmi';
 
 import {
   Navbar,
@@ -15,25 +13,46 @@ import {
   Clients,
   CTA,
   Footer,
-} from "./landing/components";
-import DesktopUI from "./dapp/desktop";
+} from './landing/components';
+import { bsc } from 'wagmi/chains';
+
+import {
+  EthereumClient,
+  w3mConnectors,
+  w3mProvider,
+} from '@web3modal/ethereum';
+import { Web3Modal } from '@web3modal/react';
+import DesktopUI from './dapp/desktop';
+import { contractAddress } from './models/contract';
 
 /**
  *
  *
  *
  */
-const projectId = "ac736e4983fc967ec9ac0e8b6b16e287";
+const projectId = 'fb15601992f73295b517e887f1b09c43';
 
-const chains = [bsc]
-const wagmiConfig = defaultWagmiConfig({ chains, projectId })
-createWeb3Modal({ wagmiConfig, projectId, chains })
+const chains = [bsc];
+const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors: w3mConnectors({ projectId, chains }),
+  publicClient,
+});
+
+const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
 const App = () => (
   <>
     <WagmiConfig config={wagmiConfig}>
       <HomePage />
     </WagmiConfig>
+
+    <Web3Modal
+      projectId={projectId}
+      //defaultChain={bsc}
+      ethereumClient={ethereumClient}
+    />
   </>
 );
 
@@ -45,7 +64,7 @@ function HomePage() {
     return <DesktopUI></DesktopUI>;
   }
   return (
-    <div className="bg-primary w-full overlow-hidden">
+    <div className='bg-primary w-full overlow-hidden'>
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
@@ -78,14 +97,19 @@ function HomePage() {
 
 function CX() {
   return (
-    <div className="flex flex-col md:flex-row gap-10 justify-center items-start">
+    <div className='flex flex-col md:flex-row gap-10 justify-center items-start'>
       <img
-        className="h-44 w-fit cursor-pointer"
-        src="bnb_banner.png"
+        className='h-44 w-fit cursor-pointer'
+        src='bnb_banner.png'
         onClick={() => {
-          window.open(
-            `https://bscscan.com/address/0x8215c949F2025B84629041903aDe8394f0a080c6#code`
-          );
+          window.open(`https://bscscan.com/address/${contractAddress}`);
+        }}
+      ></img>
+      <img
+        className='h-44 w-fit cursor-pointer'
+        src='audit.png'
+        onClick={() => {
+          window.open(`https://solidaudit.xyz/audit?id=b6466fba`);
         }}
       ></img>
     </div>
