@@ -270,8 +270,8 @@ export async function Reinvest(selectedAccount) {
 
 export async function deposit(account, refferal, amount, onCancel) {
   console.log(amount);
-  if (amount == null || amount === '' || amount < 0.01 || amount == 0) {
-    toast.error('minimum amount is 0.01 BNB');
+  if (amount == null || amount === '' || amount < 0.04 || amount == 0) {
+    toast.error('minimum amount is 0.04 BNB');
   } else {
     await approveAmount(amount, account, refferal, onCancel);
   }
