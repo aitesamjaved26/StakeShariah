@@ -15,7 +15,7 @@ const Footer = () => (
       </div>
 
       <div className='flex-[1.5] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10'>
-        {/* {footerLinks.map((footerLink) => (
+        {footerLinks.map((footerLink) => (
           <div
             key={footerLink.title}
             className='flex flex-col ss:my-0 my-4 min-w-[150px]'
@@ -38,9 +38,8 @@ const Footer = () => (
             </ul>
           </div>
         ))}
-      </div> */}
       </div>
-    </div>
+      </div>
 
     <div className='w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3f3r45]'>
       <p className='font-poppins font-normal text-center text-[18px] leading-[27px] text-white'>
