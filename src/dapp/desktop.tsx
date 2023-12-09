@@ -179,11 +179,11 @@ function DesktopUI() {
       ),
       txt: 'Community',
     },
-    {
-      href: '#',
-      icon: <AiOutlineQuestion size={22}></AiOutlineQuestion>,
-      txt: 'FAQS',
-    },
+    // {
+    //   href: '#',
+    //   icon: <AiOutlineQuestion size={22}></AiOutlineQuestion>,
+    //   txt: 'FAQS',
+    // },
     {
       href: 'mailto:support@stakeshariah.com',
       icon: <AiOutlineMail size={22}></AiOutlineMail>,
