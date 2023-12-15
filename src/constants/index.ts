@@ -52,8 +52,8 @@ export const features = [
   {
     id: 'feature-3',
     icon: send,
-    title: 'Earn 2.5 % weekly',
-    content: 'Invest with confidence, And get 2.5% ROI Weekly',
+    title: 'Earn 120% APY',
+    content: 'Invest with confidence, And get 120% APY',
   },
 ];
 

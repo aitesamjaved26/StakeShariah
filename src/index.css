@@ -111,6 +111,7 @@
 .feature-card:hover {
   background: var(--black-gradient);
   box-shadow: var(--card-shadow);
+  margin-right: auto;
 }
 
 .feedback-container .feedback-card:last-child {

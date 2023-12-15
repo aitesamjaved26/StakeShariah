@@ -16,8 +16,8 @@ function FAQSection() {
     {
       title: 'Processing Fee',
       content: `At Stake Shariah, we believe in being transparent about all fees and charges associated with our platform. We do not charge any fees on deposits 
-        For withdrawal requests, we charge a small processing fee of 3% on the requested amount. This fee helps us cover the costs associated with processing your withdrawal request, including transaction fees and administrative costs
-        Please note that the processing fee is deducted from the withdrawal amount, and the remaining amount will be credited to your BNB wallet. For example, if you request a withdrawal of 100 BNB, the processing fee will be 3 BNB, and you will receive 97 BNB in your wallet`,
+        For withdrawal requests, we charge a small processing fee of 5% on the requested amount. This fee helps us cover the costs associated with processing your withdrawal request, including transaction fees and administrative costs
+        Please note that the processing fee is deducted from the withdrawal amount, and the remaining amount will be credited to your BNB wallet. For example, if you request a withdrawal of 1 BNB, the processing fee will be 0.05 BNB, and you will receive 0.95 BNB in your wallet`,
     },
   ];
   return (
