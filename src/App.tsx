@@ -102,7 +102,7 @@ function CX() {
         className='h-44 w-fit cursor-pointer'
         src='bnb_banner.png'
         onClick={() => {
-          window.open(`https://bscscan.com/address/0x8215c949f2025b84629041903ade8394f0a080c6`);
+          window.open(`https://bscscan.com/address/0x1adb950d8bb3da4be104211d5ab038628e477fe6`);
         }}
       ></img>
       <img
