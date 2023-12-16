@@ -34,12 +34,26 @@ export const navLinks = [
   },
 
   {
-    //id: "Presentation",
+    id: "Presentation",
     title: "Presentation",
     onClick: () => {
-      // open a download dialog for the presentation file
-      window.open("/StakeShariah.pdf", "_blank");
-    },
+        const filePath = "/StakeShariah.pdf"; // Adjust if needed
+      
+        if (window.FileSaver && typeof window.FileSaver !== "undefined") {
+          // Use FileSaver library for controlled download
+          fetch(filePath)
+            .then(response => response.blob())
+            .then(blob => {
+              const file = new File([blob], "StakeShariah.pdf", { type: "application/pdf" });
+              FileSaver.saveAs(file);
+            });
+        } else {
+          // Fallback to window.open if FileSaver is unavailable
+          window.open(filePath, "_blank");
+        }
+      },
+      
+    
   },
 ];
 
