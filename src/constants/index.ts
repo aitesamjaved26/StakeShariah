@@ -36,24 +36,7 @@ export const navLinks = [
   {
     id: "Presentation",
     title: "Presentation",
-    onClick: () => {
-        const filePath = "/StakeShariah.pdf"; // Adjust if needed
-      
-        if (window.FileSaver && typeof window.FileSaver !== "undefined") {
-          // Use FileSaver library for controlled download
-          fetch(filePath)
-            .then(response => response.blob())
-            .then(blob => {
-              const file = new File([blob], "StakeShariah.pdf", { type: "application/pdf" });
-              FileSaver.saveAs(file);
-            });
-        } else {
-          // Fallback to window.open if FileSaver is unavailable
-          window.open(filePath, "_blank");
-        }
-      },
-      
-    
+       
   },
 ];
 
@@ -122,6 +105,28 @@ export const stats = [
     title: "Transaction",
     value: "$230M+",
   },
+];
+
+export const Presentation=[
+  {
+    onClick: () => {
+      const filePath = "/StakeShariah.pdf"; // Adjust if needed
+    
+      if (window.FileSaver && typeof window.FileSaver !== "undefined") {
+        // Use FileSaver library for controlled download
+        fetch(filePath)
+          .then(response => response.blob())
+          .then(blob => {
+            const file = new File([blob], "StakeShariah.pdf", { type: "application/pdf" });
+            FileSaver.saveAs(file);
+          });
+      } else {
+        // Fallback to window.open if FileSaver is unavailable
+        window.open(filePath, "_blank");
+      }
+    },
+    
+  }
 ];
 
 export const footerLinks = [
