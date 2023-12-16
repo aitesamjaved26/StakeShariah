@@ -34,7 +34,7 @@ export const navLinks = [
   },
 
   {
-    id: "Presentation",
+    //id: "Presentation",
     title: "Presentation",
     onClick: () => {
       // open a download dialog for the presentation file
