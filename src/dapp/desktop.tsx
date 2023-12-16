@@ -301,7 +301,7 @@ function DesktopUI() {
                   </span>
                   {` `}
                   <span className='font-Unbounded text-xl font-bold self-center text-[#]'>
-                    Shirah
+                    Shariah
                   </span>
                 </div>
 

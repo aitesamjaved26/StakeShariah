@@ -13,161 +13,164 @@ import {
   send,
   shield,
   star,
-} from '../assets';
+} from "../assets";
 
 export const navLinks = [
   {
-    id: 'home',
-    title: 'Home',
+    id: "home",
+    title: "Home",
   },
   {
-    id: 'features',
-    title: 'Features',
+    id: "features",
+    title: "Features",
   },
   {
-    id: 'share&earn',
-    title: 'Refferal',
+    id: "share&earn",
+    title: "Refferal",
   },
   {
-    id: 'clients',
-    title: 'How its works?',
+    id: "clients",
+    title: "How its works?",
   },
 
   {
-    id: 'Presentation',
-    title: 'Download Presentation',
-    href: "/StakeShariah.pdf"
+    id: "Presentation",
+    title: "Presentation",
+    onClick: () => {
+      // open a download dialog for the presentation file
+      window.open("/StakeShariah.pdf", "_blank");
+    },
   },
 ];
 
 export const features = [
   {
-    id: 'feature-1',
+    id: "feature-1",
     icon: star,
-    title: 'Shariah compliant',
+    title: "Shariah compliant",
     content:
-      'Stake Shariah, a Shariah-compliant DEFI on BNB, provides investors with a unique opportunity to participate in a Halal and transparent investment product, utilizing blockchain technology.      ',
+      "Stake Shariah, a Shariah-compliant DEFI on BNB, provides investors with a unique opportunity to participate in a Halal and transparent investment product, utilizing blockchain technology.      ",
   },
   {
-    id: 'feature-2',
+    id: "feature-2",
     icon: shield,
-    title: 'Transparent Fee Structure',
+    title: "Transparent Fee Structure",
     content:
-      'Our platform charges a nominal 3% deposit fee and a 5% withdrawal fee, ensuring clarity about the costs associated with your transactions.',
+      "Our platform charges a nominal 3% deposit fee and a 5% withdrawal fee, ensuring clarity about the costs associated with your transactions.",
   },
   {
-    id: 'feature-3',
+    id: "feature-3",
     icon: send,
-    title: 'Earn 120% APY',
-    content: 'Invest with confidence, And get 120% APY',
+    title: "Earn 120% APY",
+    content: "Invest with confidence, And get 120% APY",
   },
 ];
 
 export const feedback = [
   {
-    id: 'feedback-1',
-    content: 'We recommend to use TrustWallet mobile app or MetaMask .',
-    name: 'Connect wallet',
-    title: 'Use Trust Wallet',
-    img: '/TWT.png',
+    id: "feedback-1",
+    content: "We recommend to use TrustWallet mobile app or MetaMask .",
+    name: "Connect wallet",
+    title: "Use Trust Wallet",
+    img: "/TWT.png",
   },
   {
-    id: 'feedback-2',
+    id: "feedback-2",
     content:
-      'You can easily acquire BNB (BEP-20) from the most popular platforms.      ',
-    name: 'Get BNB',
-    title: 'Founder & Leader',
+      "You can easily acquire BNB (BEP-20) from the most popular platforms.      ",
+    name: "Get BNB",
+    title: "Founder & Leader",
     img: `https://assets-cdn.trustwallet.com/blockchains/smartchain/info/logo.png`,
   },
   {
-    id: 'feedback-3',
+    id: "feedback-3",
     content:
-      'Stake any amount of your BNB to access monthly staking rewards.      ',
-    name: 'Start Investing',
-    title: 'Founder & Leader',
+      "Stake any amount of your BNB to access monthly staking rewards.      ",
+    name: "Start Investing",
+    title: "Founder & Leader",
     img: `/sm.png`,
   },
 ];
 
 export const stats = [
   {
-    id: 'stats-1',
-    title: 'User Active',
-    value: '3800+',
+    id: "stats-1",
+    title: "User Active",
+    value: "3800+",
   },
   {
-    id: 'stats-2',
-    title: 'Deposits',
-    value: '100M+',
+    id: "stats-2",
+    title: "Deposits",
+    value: "100M+",
   },
   {
-    id: 'stats-3',
-    title: 'Transaction',
-    value: '$230M+',
+    id: "stats-3",
+    title: "Transaction",
+    value: "$230M+",
   },
 ];
 
 export const footerLinks = [
   {
-    title: 'Useful Links',
+    title: "Useful Links",
     links: [
       {
-        name: 'Content',
-        link: 'https://www.hoobank.com/content/',
+        name: "Content",
+        link: "https://www.hoobank.com/content/",
       },
       {
-        name: 'How it Works',
-        link: 'https://www.hoobank.com/how-it-works/',
+        name: "How it Works",
+        link: "https://www.hoobank.com/how-it-works/",
       },
       {
-        name: 'Create',
-        link: 'https://www.hoobank.com/create/',
+        name: "Create",
+        link: "https://www.hoobank.com/create/",
       },
       {
-        name: 'Explore',
-        link: 'https://www.hoobank.com/explore/',
+        name: "Explore",
+        link: "https://www.hoobank.com/explore/",
       },
       {
-        name: 'Terms & Services',
-        link: 'https://www.hoobank.com/terms-and-services/',
+        name: "Terms & Services",
+        link: "https://www.hoobank.com/terms-and-services/",
       },
     ],
   },
   {
-    title: 'Community',
+    title: "Community",
     links: [
       {
-        name: 'Help Center',
-        link: 'https://www.hoobank.com/help-center/',
+        name: "Help Center",
+        link: "https://www.hoobank.com/help-center/",
       },
       {
-        name: 'Partners',
-        link: 'https://www.hoobank.com/partners/',
+        name: "Partners",
+        link: "https://www.hoobank.com/partners/",
       },
       {
-        name: 'Suggestions',
-        link: 'https://www.hoobank.com/suggestions/',
+        name: "Suggestions",
+        link: "https://www.hoobank.com/suggestions/",
       },
       {
-        name: 'Blog',
-        link: 'https://www.hoobank.com/blog/',
+        name: "Blog",
+        link: "https://www.hoobank.com/blog/",
       },
       {
-        name: 'Newsletters',
-        link: 'https://www.hoobank.com/newsletters/',
+        name: "Newsletters",
+        link: "https://www.hoobank.com/newsletters/",
       },
     ],
   },
   {
-    title: 'Partner',
+    title: "Partner",
     links: [
       {
-        name: 'Our Partner',
-        link: 'https://www.hoobank.com/our-partner/',
+        name: "Our Partner",
+        link: "https://www.hoobank.com/our-partner/",
       },
       {
-        name: 'Become a Partner',
-        link: 'https://www.hoobank.com/become-a-partner/',
+        name: "Become a Partner",
+        link: "https://www.hoobank.com/become-a-partner/",
       },
     ],
   },
@@ -190,27 +193,27 @@ export const socialMedia = [
   //   link: 'https://www.twitter.com/',
   // },
   {
-    id: 'social-media-4',
+    id: "social-media-4",
     icon: send,
-    link: 'https://t.me/StakeShariah',
+    link: "https://t.me/StakeShariah",
   },
 ];
 
 export const clients = [
   {
-    id: 'client-1',
+    id: "client-1",
     logo: airbnb,
   },
   {
-    id: 'client-2',
+    id: "client-2",
     logo: binance,
   },
   {
-    id: 'client-3',
+    id: "client-3",
     logo: coinbase,
   },
   {
-    id: 'client-4',
+    id: "client-4",
     logo: dropbox,
   },
 ];
