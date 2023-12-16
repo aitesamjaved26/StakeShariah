@@ -109,11 +109,10 @@ export const stats = [
 
 export const Presentation=[
   {
-    onClick: () => {
-      // open a download dialog for the presentation file
-      window.open('/StakeShariah.pdf', '_blank');
-    }
-    },
+    id: "Presentation",
+    title: "Presentation",
+    href='/StakeShariah.pdf',
+  },
     
   
 ];
