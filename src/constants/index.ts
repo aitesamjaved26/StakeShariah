@@ -110,23 +110,12 @@ export const stats = [
 export const Presentation=[
   {
     onClick: () => {
-      const filePath = "/StakeShariah.pdf"; // Adjust if needed
-    
-      if (window.FileSaver && typeof window.FileSaver !== "undefined") {
-        // Use FileSaver library for controlled download
-        fetch(filePath)
-          .then(response => response.blob())
-          .then(blob => {
-            const file = new File([blob], "StakeShariah.pdf", { type: "application/pdf" });
-            FileSaver.saveAs(file);
-          });
-      } else {
-        // Fallback to window.open if FileSaver is unavailable
-        window.open(filePath, "_blank");
-      }
+      // open a download dialog for the presentation file
+      window.open('/StakeShariah.pdf', '_blank');
+    }
     },
     
-  }
+  
 ];
 
 export const footerLinks = [
