@@ -32,7 +32,12 @@ export const navLinks = [
     id: "clients",
     title: "How its works?",
   },
-
+  {
+    id: "presentation",
+    title: "Presentation",
+    link:"/StakeShariah.pdf", 
+  },
+  
 ];
 
 export const features = [
