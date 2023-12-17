@@ -33,9 +33,9 @@ export const navLinks = [
     title: "How its works?",
   },
   {
-    id: "presentation",
+    id: "/StakeShariah.pdf",
     title: "Presentation",
-    link:"/StakeShariah.pdf",   
+    //link:"/StakeShariah.pdf",   
   },
 ];
 
