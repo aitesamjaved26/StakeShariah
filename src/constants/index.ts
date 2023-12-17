@@ -36,7 +36,7 @@ export const navLinks = [
   {
     id: "Presentation",
     title: "Presentation",
-       
+    link:"/StakeShariah.pdf",   
   },
 ];
 
@@ -107,11 +107,11 @@ export const stats = [
   },
 ];
 
-export const Presentation=[
-  {
-    id: "Presentation",
-    link:"/StakeShariah.pdf",
-  },
+// export const Presentation=[
+//   {
+//     id: "Presentation",
+    
+//   },
     
   
 ];
