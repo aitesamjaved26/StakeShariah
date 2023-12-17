@@ -110,7 +110,7 @@ export const stats = [
 export const Presentation=[
   {
     id: "Presentation",
-    href:"/StakeShariah.pdf"
+    link:"/StakeShariah.pdf"
   },
     
   
