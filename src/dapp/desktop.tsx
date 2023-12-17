@@ -608,7 +608,7 @@ function DashBoard({ status }: { status: UserStats }) {
             <div className='grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center p-5'>
               {Object.entries([
                 {
-                  title: 'Deposit',
+                  title: 'Stake Now',
                   icon: (
                     <AiOutlinePlusCircle
                       size={35}
@@ -629,7 +629,7 @@ function DashBoard({ status }: { status: UserStats }) {
                   ),
                 },
                 {
-                  title: 'Capital',
+                  title: 'Unstake',
                   icon: (
                     <AiOutlineDollar
                       color='#623CE7'

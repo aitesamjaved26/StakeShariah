@@ -349,7 +349,7 @@ export function AccountUI({ status }: { status: UserStats }) {
               onClick={() => handleShowDialog('capital Withdraw')}
               // onClick={() => withdrawToken(account)}
             >
-              Capital Withdraw
+              Unstake
             </button>
           </div>
         </div>
@@ -454,7 +454,7 @@ export function InvestUI({ onCancel }) {
                   className='text-white text-xl font-poppins i h-10 w-64 mb-5 bg-gradient-to-br from-blue-400 to-blue-600 items-center rounded-full shadow-2xl cursor-pointer absolute overflow-hidden transform hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out'
                 >
                   {' '}
-                  Invest Now
+                  Stake Now
                 </button>
                 <div className='mb-2'></div>
                 <button
