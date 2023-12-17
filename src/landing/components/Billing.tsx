@@ -21,7 +21,7 @@ function Billing() {
       <div className={layout.sectionInfo}>
         <h2 className={styles.heading2}>
           {' '}
-          Capital Withdraw<br className='sm:block hidden' /> Anytime.
+          Unstake<br className='sm:block hidden' /> Anytime.
         </h2>
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
           Need to withdraw your capital? No problem! With our unique feature,
