@@ -22,11 +22,6 @@ const Navbar = () => {
             } text-white`}
           >
             <a href={`#${nav.id}`}>{nav.title}</a>
-            <a href="/StakeShariah.pdf" download>
-          <button type="button" className="py-4 px-6 bg-green-gradient font-poppins font-medium text-[18px] text-white outline-none rounded-lg mt-4">
-            Presentation
-          </button>
-        </a>
           </li>
         ))}
       </ul>

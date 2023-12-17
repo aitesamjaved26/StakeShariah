@@ -32,11 +32,11 @@ export const navLinks = [
     id: "clients",
     title: "How its works?",
   },
-  {
-    id: "presentation",
-    title: "Presentation",
-    link:"/StakeShariah.pdf", 
-  },
+  // {
+  //   id: "presentation",
+  //   title: "Presentation",
+  //   link:"/StakeShariah.pdf", 
+  // },
   
 ];
 
@@ -107,11 +107,15 @@ export const stats = [
   },
 ];
 
-export const presentation = {
-  id: "presentation",
-  title: "Presentation",
-  link: "/StakeShariah.pdf",
-};
+// export const presentation=
+//   {
+//     id: "presentation",
+//     title: "Presentation",
+//     link:"/StakeShariah.pdf", 
+    
+//   }
+  
+
 
 export const footerLinks = [
   {
