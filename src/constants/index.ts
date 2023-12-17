@@ -33,7 +33,7 @@ export const navLinks = [
     title: "How its works?",
   },
   {
-    id: "/StakeShariah.pdf",
+    id: "StakeShariah.pdf",
     title: "Presentation",
     //link:"/StakeShariah.pdf",   
   },
