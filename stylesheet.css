@@ -1,7 +1,13 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin-top: 0px;
+  padding: 0px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: smaller;
+  font-variant: all-petite-caps;
 }
 body {
   background: #32386d;
@@ -13,8 +19,9 @@ body {
   top: 50%;
   width: 500px;
   height: 140px;
-  margin-top: -70px;
-  padding: 10px;
+  margin-top: -20px;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
   border-radius: 20px;
   transform: translateX(-50%);
 }
@@ -91,7 +98,7 @@ body {
   stroke-linejoin: round;
   stroke-dasharray: 0, 518.055065155;
   stroke-dashoffset: 0;
-  
+
   opacity: 0;
 }
 .demo__text {
@@ -111,85 +118,123 @@ body {
   animation: hideText 4s infinite;
 }
 @keyframes contAnim {
-  15%, 100% {
+  15%,
+  100% {
     margin-left: -250px;
     width: 500px;
- }
-  25%, 90% {
+  }
+  25%,
+  90% {
     margin-left: -70px;
     width: 140px;
- }
+  }
 }
 @keyframes numAnim {
   15% {
     stroke-dasharray: 0, 518.055065155;
     stroke-dashoffset: 0;
     opacity: 0;
- }
-  25%, 41% {
+  }
+  25%,
+  41% {
     opacity: 1;
     stroke-dasharray: 144.4256591797, 518.055065155;
     stroke-dashoffset: -40;
- }
-  53%, 66% {
+  }
+  53%,
+  66% {
     stroke-dasharray: 136.0216217041, 518.055065155;
     stroke-dashoffset: -227.238697052;
- }
+  }
   76% {
     stroke-dasharray: 113.4751205444, 518.055065155;
     stroke-dashoffset: -445.8995704651;
- }
-  88%, 100% {
+  }
+  88%,
+  100% {
     stroke-dasharray: 72.1554946899, 518.055065155;
     stroke-dashoffset: -445.8995704651;
- }
+  }
   92% {
     opacity: 1;
- }
+  }
   100% {
     opacity: 0;
- }
+  }
 }
 @keyframes rotation {
   to {
     transform: rotate(360deg);
- }
+  }
 }
 @keyframes demoAnim {
   15% {
     border-radius: 20px;
     transform: rotate(0);
- }
-  30%, 43% {
+  }
+  30%,
+  43% {
     border-radius: 50%;
     transform: rotate(360deg);
- }
-  52%, 65% {
+  }
+  52%,
+  65% {
     border-radius: 0;
     transform: rotate(720deg);
- }
-  78%, 90% {
+  }
+  78%,
+  90% {
     border-radius: 50%;
     transform: rotate(1080deg);
- }
+  }
   100% {
     border-radius: 20px;
     transform: rotate(1440deg);
- }
+  }
 }
 @keyframes hideText {
-  15%, 100% {
+  15%,
+  100% {
     opacity: 1;
- }
-  20%, 96% {
+  }
+  20%,
+  96% {
     opacity: 0;
- }
+  }
 }
 
-.text{
+.text {
   font-size: 5rem;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Montserrat','Poppins', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Montserrat", "Poppins", "Oxygen", "Ubuntu", "Cantarell", "Open Sans",
+    "Helvetica Neue", sans-serif;
   text-align: center;
   color: aliceblue;
   padding-top: 15%;
 }
+
+/* Your existing styles... */
+
+.download-button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 20px 20px;
+  font-size: 16px;
+  background-color: #fd3359;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.1s;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Your existing styles... */
+
