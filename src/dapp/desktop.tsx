@@ -164,11 +164,11 @@ function DesktopUI() {
       icon: <AiOutlineDollar size={22}></AiOutlineDollar>,
       txt: 'Share & earn',
     },
-    {
-      href: `https://bscscan.com/address/0x1adb950d8bb3da4be104211d5ab038628e477fe6`,
-      icon: <FaFileContract size={22}></FaFileContract>,
-      txt: 'Contract',
-    },
+    // {
+    //   href: `https://bscscan.com/address/0x1adb950d8bb3da4be104211d5ab038628e477fe6`,
+    //   icon: <FaFileContract size={22}></FaFileContract>,
+    //   txt: 'Contract',
+    // },
     {
       href: 'https://t.me/StakeShariah',
       icon: (
