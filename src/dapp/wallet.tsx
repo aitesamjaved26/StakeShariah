@@ -94,7 +94,7 @@ export async function approveAmount(
     abi: contractABI,
   });
   try {
-    const gas = await contract.estimateGas.invest({
+    const gas = await contract.estimateGas.stake({
       account: selectedAccount,
       value: amountInWei,
       //@ts-ignore
@@ -110,7 +110,7 @@ export async function approveAmount(
       //@ts-ignore
       value: amountInWei,
       //@ts-ignore
-      functionName: 'invest',
+      functionName: 'stake',
       //@ts-ignore
       gas: gas,
       //@ts-ignore
@@ -157,7 +157,7 @@ export async function withdrawAmount(
     abi: contractABI,
   });
   try {
-    const gas = await contract.estimateGas.invest({
+    const gas = await contract.estimateGas.stake({
       account: selectedAccount,
       value: amountInWei,
       //@ts-ignore
@@ -220,7 +220,7 @@ export async function Reinvest(selectedAccount) {
     abi: contractABI,
   });
   try {
-    const gas = await contract.estimateGas.reinvest({
+    const gas = await contract.estimateGas.compound({
       account: selectedAccount,
       //@ts-ignore
     });
@@ -234,7 +234,7 @@ export async function Reinvest(selectedAccount) {
       //@ts-ignore
       value: amountInWei,
       //@ts-ignore
-      functionName: `reinvest`,
+      functionName: `compound`,
       //@ts-ignore
       gas: gas,
       //@ts-ignore
@@ -386,7 +386,7 @@ export function InvestUI({ onCancel }) {
     if (refAddrr != null && refAddrr != address) {
       return refAddrr;
     } else {
-      return '0x31D6Ce421641208C843335cfdB73ACac0Efd374d';
+      return '0x4b6687d5331f445345176fFa4ca7519b401152B1';
     }
   }
   const notes = [

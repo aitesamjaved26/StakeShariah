@@ -21,7 +21,7 @@ function WithdrawDialog({ onCancel }) {
       abi: contractABI,
     });
     try {
-      const gas = await contract.estimateGas.withdraw({
+      const gas = await contract.estimateGas.claim({
         account: address,
         args: [],
       });
@@ -32,7 +32,7 @@ function WithdrawDialog({ onCancel }) {
         //@ts-ignore
         abi: contractABI,
         //@ts-ignore
-        functionName: 'withdraw',
+        functionName: 'claim',
         //@ts-ignore
         gas: gas,
         //@ts-ignore
@@ -87,7 +87,7 @@ export function CapitalWithdrawD({ onCancel }) {
       abi: contractABI,
     });
     try {
-      const gas = await contract.estimateGas.capitalWithdraw({
+      const gas = await contract.estimateGas.unstake({
         account: address,
         args: [],
       });
@@ -99,7 +99,7 @@ export function CapitalWithdrawD({ onCancel }) {
         //@ts-ignore
         abi: contractABI,
         //@ts-ignore
-        functionName: 'capitalWithdraw',
+        functionName: 'unstake',
         //@ts-ignore
         gas: gas,
         //@ts-ignore

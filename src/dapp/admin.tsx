@@ -2,6 +2,7 @@ import { Modal, TextInput } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import {
   AiFillAccountBook,
+  AiOutlinePercentage,
   AiOutlinePlusCircle,
   AiOutlineUser,
 } from 'react-icons/ai';
@@ -17,6 +18,7 @@ import Web3 from 'web3';
 import { useAccount } from 'wagmi';
 import { ContractFunctionExecutionError } from 'viem';
 import { approveAmount } from './wallet';
+import ContractPr from './admin/precentage';
 
 function AdminPanel() {
   const [tab, setTab] = useState('Invest');
@@ -71,21 +73,20 @@ function AdminPanel() {
                     ></DepositAdminUI>
                   ),
                 },
-                // {
-                //   title: 'Set Precentage',
-                //   size: '2xl',
-                //   icon: (
-                //     <AiOutlinePercentage
-                //       color='red'
-                //       size={35}
-                //     ></AiOutlinePercentage>
-                //   ),
-                //   widget: (
-                //     <ContractPr
-                //     //onCancel={() => setShowDialog(false)}
-                //     ></ContractPr>
-                //   ),
-                // },
+                {
+                  title: 'Set Precentage',
+                  size: '2xl',
+                  icon: (
+                    <AiOutlinePercentage
+                      color='red'
+                      size={35}
+                    ></AiOutlinePercentage>
+                  ),
+                  widget: (
+                    <ContractPr
+                    ></ContractPr>
+                  ),
+                },
                 {
                   title: 'Block User',
                   icon: (

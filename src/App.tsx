@@ -87,7 +87,7 @@ function HomePage() {
           <Testimonials />
           {/* <Clients /> */}
           <CTA />
-          <CX></CX>
+          {/* <CX></CX> */}
           <Footer />
         </div>
       </div>

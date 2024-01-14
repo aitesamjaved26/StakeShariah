@@ -91,7 +91,7 @@ async function RejectRequest(requestId) {
       abi: contractABI,
       //@ts-ignore
       //@ts-ignore
-      functionName: 'RejectCapitalWithdrawal',
+      functionName: 'rejectCapitalWithdrawal',
       //@ts-ignore
       account: adminAddress,
       //@ts-ignore
