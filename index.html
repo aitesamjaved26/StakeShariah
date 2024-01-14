@@ -1,84 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="stylesheet.css"> <!-- Link to your external CSS file -->
-</head>
-
-<body>
-
-  <p class="text">we are launching in</p>
-  <div class="demo">
-    <div class="demo__colored-blocks">
-      <div class="demo__colored-blocks-rotater">
-        <div class="demo__colored-block"></div>
-        <div class="demo__colored-block"></div>
-        <div class="demo__colored-block"></div>
-      </div>
-      <div class="demo__colored-blocks-inner"></div>
-      <div class="demo__text">launching soon</div>
-    </div>
-    <div class="demo__inner">
-      <svg class="demo__numbers" viewBox="0 0 100 100">
-        <defs>
-          <!-- Your paths for numbers -->
-        </defs>
-        <path class="demo__numbers-path" d="M-10,20 60,20 40,50 a18,15 0 1,1 -12,19 Q25,44 34.4,27.4 l7,-7 a16,16 0 0,1 22.6,22.6 l-30,30 l35,0 L69,73 a20,10 0 0,1 20,10 a17,17 0 0,1 -34,0 L55,83 l0,-61 L40,28" />
-      </svg>
-    </div>
-    <div class="download-button">
-      <button onclick="downloadPresentation()">Download Presentation</button>
-    </div>
-  </div>
-
-  <script>
-    // Set the target date and time (January 19, 2024, 11:59 PM)
-    const targetDate = new Date('2024-01-19T23:59:00').getTime();
-
-    function updateTimer() {
-      const currentDate = new Date().getTime();
-      const timeDifference = targetDate - currentDate;
-
-      if (timeDifference > 0) {
-        // Calculate days, hours, minutes, and seconds
-        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-        // Update the timer element
-        document.querySelector('.demo__text').innerHTML = `${days}Days  ${hours}Hours  ${minutes}Minutes  ${seconds}Seconds`;
-      } else {
-        // Display a message when the countdown is over
-        document.querySelector('.demo__text').innerHTML = 'EXPIRED';
-      }
-
-      requestAnimationFrame(updateTimer);
-    }
-    function downloadPresentation() {
-  // Assuming your file is in the same folder as the HTML file
-  var fileUrl = 'StakeShariah.pdf';
-  
-  var link = document.createElement('a');
-  link.href = fileUrl;
-  link.download = 'StakeShariah.pdf';
-  document.body.appendChild(link);
-  
-  link.click();
-  
-  document.body.removeChild(link);
-  // Optionally, you may want to revoke the URL to free up resources
-  // URL.revokeObjectURL(link.href);
-  
-  alert("Downloading Presentation...");
-}
-
-
-    // Initial call to start the timer
-    updateTimer();
-  </script>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/logo.png"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Stake Shariah</title>
+    <script
+      type="text/javascript"
+      src="https://files.coinmarketcap.com/static/widget/currency.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      type="module"
+      src="/src/main.tsx"
+    ></script>
+  </body>
 </html>
