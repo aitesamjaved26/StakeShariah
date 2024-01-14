@@ -68,9 +68,9 @@ function DesktopUI() {
       return <RefferalUI status={status}></RefferalUI>;
     } else if (currentPage == 'Transactions') {
       return <TxPage status={status}></TxPage>;
-    // } else if (currentPage == 'FAQS') {
-    //   return <FAQSection></FAQSection>;
-    // } else if (currentPage == 'Admin Panel') {
+    } else if (currentPage == 'FAQS') {
+      return <FAQSection></FAQSection>;
+    } else if (currentPage == 'Admin Panel') {
       return <AdminPanel></AdminPanel>;
     } else {
       return <div>Page Not found</div>;
@@ -164,11 +164,11 @@ function DesktopUI() {
       icon: <AiOutlineDollar size={22}></AiOutlineDollar>,
       txt: 'Share & earn',
     },
-    // {
-    //   href: `https://bscscan.com/address/0x1adb950d8bb3da4be104211d5ab038628e477fe6`,
-    //   icon: <FaFileContract size={22}></FaFileContract>,
-    //   txt: 'Contract',
-    // },
+    {
+      href: `https://bscscan.com/address/0xe49f55bfd4e673a91818fbc2e63271e02277fe95`,
+      icon: <FaFileContract size={22}></FaFileContract>,
+      txt: 'Contract',
+    },
     {
       href: 'https://t.me/StakeShariah',
       icon: (

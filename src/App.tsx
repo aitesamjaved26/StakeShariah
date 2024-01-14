@@ -87,7 +87,7 @@ function HomePage() {
           <Testimonials />
           {/* <Clients /> */}
           <CTA />
-          <CX></CX>
+          {/* <CX></CX> */}
           <Footer />
         </div>
       </div>
@@ -101,18 +101,17 @@ function CX() {
       <img
         className='h-44 w-fit cursor-pointer'
         src='bnb_banner.png'
-        // onClick={() => {
-        //   window.open(`#`);
-        // }}
+        onClick={() => {
+          window.open(`https://bscscan.com/address/0x1adb950d8bb3da4be104211d5ab038628e477fe6`);
+        }}
       ></img>
       <img
         className='h-44 w-fit cursor-pointer'
         src='audit.png'
-        // onClick={() => {
-        //   window.open(`#`);
-        // }}
+        onClick={() => {
+          window.open(`https://solidaudit.xyz/audit?id=b6466fba`);
+        }}
       ></img>
     </div>
   );
 }
-//https://solidaudit.xyz/audit?id=b6466fba
