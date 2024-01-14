@@ -61,7 +61,7 @@ function ContractPr() {
       address: contractAddress,
       abi: contractABI,
 
-      functionName: 'setPrecentage',
+      functionName: 'updateBasePercent',
       //@ts-ignore
 
       args: [Number.parseInt(percentage)],
