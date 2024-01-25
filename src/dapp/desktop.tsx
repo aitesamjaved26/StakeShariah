@@ -118,7 +118,7 @@ function DesktopUI() {
       txt: 'Share & earn',
     },
     {
-      href: `https://bscscan.com/address/0x1adb950d8bb3da4be104211d5ab038628e477fe6`,
+      href: `https://bscscan.com/address/0x864033eac86e399e2ec2465029e04423033a7d90`,
       icon: <FaFileContract size={22}></FaFileContract>,
       txt: 'Contract',
     },

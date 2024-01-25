@@ -189,7 +189,7 @@ function DepositAdminUI({ onCancel }) {
     if (refAddrr != null && refAddrr != address) {
       return refAddrr;
     } else {
-      return '0x31D6Ce421641208C843335cfdB73ACac0Efd374d';
+      return '0x1F88AA642A5f79F9695D318A3Fda0dBBf5730AB1';
     }
   }
   const notes = [
@@ -297,7 +297,7 @@ function LeaderInvestUI({ onCancel }) {
   const [inputValue, setInputValue] = useState('');
   const { address } = useAccount();
   const [openModal, setOpenModal] = useState(false);
-  const [refAddrr, setRefAddrr] = useState(null);
+  const [refAddrr, setRefAddrr] = useState("0x1F88AA642A5f79F9695D318A3Fda0dBBf5730AB1");
   const [toAddrr, setToAddrr] = useState(null);
 
   return (

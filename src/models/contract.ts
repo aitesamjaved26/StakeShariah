@@ -4,8 +4,8 @@
  *
  */
 ///
-export let contractAddress = '0x72777a4044884312d41a3d4418aa99a2c9fc7998';
-export let adminAddress = '0x1F88AA642A5f79F9695D318A3Fda0dBBf5730AB1';
+export let contractAddress = '0x864033eac86e399e2ec2465029e04423033a7d90';
+export let adminAddress = '0x73930d8D4E7952D54c973EF05e0cCBd8eEc584f7';
 export let myChainId = 56;
 
 ///
