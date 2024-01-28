@@ -6,9 +6,32 @@ import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { TiArrowRepeatOutline } from 'react-icons/ti';
 import { useAccount } from 'wagmi';
 import { getContract } from 'wagmi/actions';
-import { prepareWriteContract, writeContract } from '@wagmi/core';
+import { prepareWriteContract, writeContract,readContracts } from '@wagmi/core';
 import { ContractFunctionExecutionError } from 'viem';
-import { BigNumber } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
+
+
+
+
+export async function getBasePercent() {
+  const myContract: any = {
+    address: contractAddress,
+    abi: contractABI,
+  };
+  var result = await readContracts({
+    contracts: [
+      {
+        ...myContract,
+        functionName: 'getUserPercentRate',
+        args: [],
+      },
+    ],
+  });
+  console.log(result[0]);
+  var rate = ethers.utils.formatUnits(result[0].result[0] as any, 'wei');
+  return rate
+}
+
 
 function WithdrawDialog({ onCancel }) {
   const { address } = useAccount();

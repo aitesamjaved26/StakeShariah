@@ -33,6 +33,7 @@ function ContractPr() {
       year: 'numeric',
     });
   };
+
   async function getInfo() {
     const myContract: any = {
       address: contractAddress,

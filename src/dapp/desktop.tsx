@@ -26,7 +26,7 @@ import { HiArrowCircleUp, HiTable } from 'react-icons/hi';
 import { TiArrowRepeatOutline } from 'react-icons/ti';
 import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi';
 import readValues from '../models/core';
-import WithdrawDialog, { CapitalWithdrawD, ReinvestD } from './actions';
+import WithdrawDialog, { CapitalWithdrawD, ReinvestD, getBasePercent } from './actions';
 import FAQSection from './faqs';
 import RefferalUI from './refferal';
 import TxPage from './tx';
@@ -60,6 +60,7 @@ function DesktopUI() {
 
   const [isloading, SetLoading] = useState(true);
   const { isConnected, address } = useAccount();
+
 
   function getCurrentPage() {
     if (currentPage == 'Dashboard') {
@@ -118,11 +119,6 @@ function DesktopUI() {
       txt: 'Share & earn',
     },
     {
-      href: `https://bscscan.com/address/0x864033eac86e399e2ec2465029e04423033a7d90`,
-      icon: <FaFileContract size={22}></FaFileContract>,
-      txt: 'Contract',
-    },
-    {
       href: 'https://t.me/StakeShariah',
       icon: (
         <BsTelegram
@@ -163,11 +159,6 @@ function DesktopUI() {
       href: '#',
       icon: <AiOutlineDollar size={22}></AiOutlineDollar>,
       txt: 'Share & earn',
-    },
-    {
-      href: `https://bscscan.com/address/0xe49f55bfd4e673a91818fbc2e63271e02277fe95`,
-      icon: <FaFileContract size={22}></FaFileContract>,
-      txt: 'Contract',
     },
     {
       href: 'https://t.me/StakeShariah',
@@ -413,8 +404,10 @@ function DashBoard({ status }: { status: UserStats }) {
   const [bnbPrice, setBnbPrice] = useState(0);
   const coinmarketcapApiKey = 'ab8ea359-3f69-43a3-8a97-b69174799ceb'; // Replace with your CoinMarketCap API key
   const apiUrl = `api.coincap.io/v2/assets/bitcoin`;
+  const [percent, setPercent] = useState("2.5");
 
   const fetchBNBPrice = async () => {
+
     try {
       const response = await axios.get(
         'https://api.coincap.io/v2/assets/binance-coin'
@@ -435,8 +428,16 @@ function DashBoard({ status }: { status: UserStats }) {
     }
     return ethAddress; // Return the original address if it's not in the expected format.
   }
+
+  const  updatePer = async ()=>{
+    console.log("PERCENT",await getBasePercent())
+    setPercent(await getBasePercent())
+  }
+
   useEffect(() => {
+    getBasePercent();
     fetchBNBPrice();
+    updatePer();
   }, []);
   return (
     <div className=''>
@@ -572,7 +573,7 @@ function DashBoard({ status }: { status: UserStats }) {
                 </p>
               </div>
               <div className='flex flex-row justify-between items-center'>
-                <div className='text-xl md:text-3xl font-bold'>2.5% ROI</div>
+                <div className='text-xl md:text-3xl font-bold'>{percent} ROI</div>
               </div>
             </div>
           </div>
