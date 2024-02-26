@@ -386,7 +386,7 @@ export function InvestUI({ onCancel }) {
     if (refAddrr != null && refAddrr != address) {
       return refAddrr;
     } else {
-      return '0xd61F797b0C68701E86b65A83EFecD802b856660c';
+      return '0x98851427233e8412F1383E661c84A19d53082c30';
     }
   }
   const notes = [
