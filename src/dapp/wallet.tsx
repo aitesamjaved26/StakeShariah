@@ -270,8 +270,8 @@ export async function Reinvest(selectedAccount) {
 
 export async function deposit(account, refferal, amount, onCancel) {
   console.log(amount);
-  if (amount == null || amount === '' || amount < 0.04 || amount == 0) {
-    toast.error('minimum amount is 0.04 BNB');
+  if (amount == null || amount === '' || amount < 0.01 || amount == 0) {
+    toast.error('Minimum Amount is 0.01 BNB');
   } else {
     await approveAmount(amount, account, refferal, onCancel);
   }
@@ -391,7 +391,7 @@ export function InvestUI({ onCancel }) {
   }
   const notes = [
     'Always Have Some Extra BNB  like  0.0005 BNB or more in your Wallet for transaction fee .',
-    'Minimum Staking Amount 0.04 BNB',
+    'Minimum Staking Amount 0.01 BNB',
   ];
   return (
     <div className='flex flec-col justify-center items-center'>

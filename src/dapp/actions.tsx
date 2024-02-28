@@ -6,12 +6,13 @@ import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { TiArrowRepeatOutline } from 'react-icons/ti';
 import { useAccount } from 'wagmi';
 import { getContract } from 'wagmi/actions';
-import { prepareWriteContract, writeContract,readContracts } from '@wagmi/core';
+import {
+  prepareWriteContract,
+  writeContract,
+  readContracts,
+} from '@wagmi/core';
 import { ContractFunctionExecutionError } from 'viem';
 import { BigNumber, ethers } from 'ethers';
-
-
-
 
 export async function getBasePercent() {
   const myContract: any = {
@@ -22,16 +23,16 @@ export async function getBasePercent() {
     contracts: [
       {
         ...myContract,
-        functionName: 'getUserPercentRate',
+        functionName: 'getBASEPERCENT',
         args: [],
       },
     ],
   });
-  console.log(result[0]);
-  var rate = ethers.utils.formatUnits(result[0].result[0] as any, 'wei');
-  return rate
-}
+  var rate = BigNumber.from(result[0].result);
+  console.log('base', rate.toNumber());
 
+  return rate.toNumber() / 10;
+}
 
 function WithdrawDialog({ onCancel }) {
   const { address } = useAccount();
@@ -174,7 +175,60 @@ export function CapitalWithdrawD({ onCancel }) {
   );
 }
 
+async function compound(account) {
+  const contract = getContract({
+    address: contractAddress as any,
+    abi: contractABI,
+  });
+  try {
+    const gas = await contract.estimateGas.compound({
+      account: account,
+      //@ts-ignore
+      args: [],
+    });
+    console.log(gas);
+    const { request } = await prepareWriteContract({
+      chainId: myChainId,
+      //@ts-ignore
+      address: contractAddress,
+      //@ts-ignore
+      abi: contractABI,
+      //@ts-ignore
+      functionName: 'compound',
+      //@ts-ignore
+      gas: gas,
+      //@ts-ignore
+      account: account,
+      //@ts-ignore
+      args: [],
+    });
+    console.log(request);
+    const { hash } = await writeContract(request);
+    toast.success(
+      'Congratulations! 🎉 Your deposit has been completed successfully. 🏦💰',
+      {
+        duration: 3000,
+      }
+    );
+    console.log(hash);
+  } catch (e) {
+    console.log('reinvest error', e);
+    if (e instanceof ContractFunctionExecutionError) {
+      var message = `${e.shortMessage}`;
+      //toast.error(`${e.shortMessage}`);
+      if (message.includes('exceeds the balance of the account.')) {
+        toast.error('You dont have enough for gas');
+      } else if (message.includes('')) {
+        toast.error(message);
+      }
+    } else {
+      toast.error(e);
+    }
+  }
+}
+
 export function ReinvestD() {
+  const { address } = useAccount();
   return (
     <div className='flex flex-col justify-center items-center gap-5 p-5'>
       <div className='flex flex-col justify-center items-center'>
@@ -182,14 +236,14 @@ export function ReinvestD() {
           color='#25D366'
           size={60}
         ></TiArrowRepeatOutline>
-        <div className='text-black mb-5 text-xl'>
-          Re-invest your profit with zero fees
-        </div>
+        <div className='text-black mb-5 text-xl'></div>
       </div>
       <div className='flex flex-col justify-center items-center mt-2'>
         <button
           id='stakebutton'
-          onClick={() => {}}
+          onClick={() => {
+            compound(address);
+          }}
           className='text-white text-xl font-poppins i h-10 w-64 mb-5 bg-gradient-to-br from-blue-400 to-blue-600 items-center rounded-full shadow-2xl cursor-pointer absolute overflow-hidden transform hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out'
         >
           {' '}

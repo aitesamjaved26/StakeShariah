@@ -8,10 +8,6 @@ function FAQSection() {
   
         To initiate a Capital Withdraw, simply log in to your Stake Shariah account and navigate to the Capital Withdraw page. Here, you can select the amount of capital you wish to withdraw and confirm your request. Our team will process your request within 24-72 hours, and your capital amount will be credited to your BNB wallet`,
     },
-    {
-      title: `What is the minimum investment amount?`,
-      content: 'The minimum investment amount is 0.04 BNB (BEP-20)',
-    },
 
     {
       title: 'Processing Fee',
@@ -22,12 +18,14 @@ function FAQSection() {
 
     {
       title: 'Why the Balance on contract is always low?',
-      content: "Traditional Ponzi schemes trap money within the contract, simply moving it between users to create an illusion of growth. StakeShariah operates differently. Your investment, minus the referral bonus, is allocated to two separate wallets: one for administration and one for marketing. These funds are used to generate real profits through StakeShariah's own revenue streams, which are then distributed back to users transparently and fairly",
+      content:
+        "Traditional Ponzi schemes trap money within the contract, simply moving it between users to create an illusion of growth. StakeShariah operates differently. Your investment, minus the referral bonus, is allocated to two separate wallets: one for administration and one for marketing. These funds are used to generate real profits through StakeShariah's own revenue streams, which are then distributed back to users transparently and fairly",
     },
 
     {
       title: 'How are profits generated and shared with users?',
-      content: "StakeShariah utilizes various revenue streams to generate profits, including staking, yield farming, and strategic partnerships. These profits are then distributed proportionally among all active users, ensuring everyone benefits from the platform's success.",
+      content:
+        "StakeShariah utilizes various revenue streams to generate profits, including staking, yield farming, and strategic partnerships. These profits are then distributed proportionally among all active users, ensuring everyone benefits from the platform's success.",
     },
   ];
   return (

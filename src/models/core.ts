@@ -36,6 +36,11 @@ export async function readValues(selectedAccount) {
         functionName: 'getUser',
         args: [selectedAccount],
       },
+      {
+        ...myContract,
+        functionName: 'getBASEPERCENT',
+        args: [],
+      },
     ],
   });
   var totalrefs = data[2].result[2] as any;

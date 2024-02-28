@@ -3,6 +3,7 @@ import Button from './Button';
 import { features } from '../../constants';
 import { Slide } from 'react-reveal';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 // Destructing
 function FeatureCard({ icon, title, content, index }) {
@@ -22,10 +23,10 @@ function FeatureCard({ icon, title, content, index }) {
         />
       </div>
       <div className='flex-1 flex flex-col ml-3'>
-        <h4 className='font-poppins font-semibold text-white text-[18px] leading-[23px] mb-1'>
+        <h4 className='font-poppins font-semibold text-white text-[20px] leading-[23px] mb-1'>
           {title}
         </h4>
-        <p className='font-poppins font-semibold text-white text-[18px] leading-[24px] mb-1'>
+        <p className='font-poppins text-white text-[16px] leading-[24px] mb-1 mt-1'>
           {content}
         </p>
       </div>
@@ -34,6 +35,7 @@ function FeatureCard({ icon, title, content, index }) {
 }
 
 function Business() {
+  const { t } = useTranslation();
   return (
     <section
       id='features'
@@ -42,13 +44,11 @@ function Business() {
       <Slide left>
         <div className={layout.sectionInfo}>
           <h2 className={styles.heading2}>
-            🚀 Join Stake Shariah, <br className='sm:block hidden' />
-            And start Earning.
+            🚀 {t('bussines')} <br className='sm:block hidden' />
+            {t('bussines2')}
           </h2>
           <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-            Invest in our Shariah-compliant DeFi and earn halal profits! 💰
-            Transparent fees, flexible withdrawals, and fair profit-sharing
-            await you. Invest with confidence in Stake Shariah today! 🌙
+            {t('bussiness3')}
           </p>
 
           <Button styles='mt-10' />
@@ -57,7 +57,7 @@ function Business() {
 
       <Slide right>
         <div className={`${layout.sectionImg} flex-col`}>
-          {features.map((feature, index) => (
+          {features(t).map((feature, index) => (
             <FeatureCard
               key={feature.id}
               {...feature}

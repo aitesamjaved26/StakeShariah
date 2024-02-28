@@ -1,8 +1,10 @@
 import React from 'react';
 import { apple, bill, google } from '../../assets';
 import styles, { layout } from '../../style';
+import { useTranslation } from 'react-i18next';
 
 function Billing() {
+  const { t } = useTranslation();
   return (
     <section
       id='product'
@@ -21,14 +23,12 @@ function Billing() {
       <div className={layout.sectionInfo}>
         <h2 className={styles.heading2}>
           {' '}
-          Unstake<br className='sm:block hidden' /> Anytime.
+          {t('billing')}
+          <br className='sm:block hidden' /> {t('billing2')}
         </h2>
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          Need to withdraw your capital? No problem! With our unique feature,
-          you can withdraw your funds at any time. Your request will be
-          processed within 24-72 hours, giving you the flexibility you deserve.
+          {t('billingparg')}
         </p>
-
         {/* Add zoom in animation to this part
         <div className='flex flex-row flex-wrap sm:mt-10 mt-6'>
           <img

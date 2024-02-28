@@ -2,8 +2,10 @@ import React from 'react';
 import { feedback } from '../../constants';
 import styles from '../../style';
 import FeedbackCard from './FeedbackCard';
+import { useTranslation } from 'react-i18next';
 
 function Testimonials() {
+  const { t } = useTranslation();
   return (
     <section
       id='clients'
@@ -14,7 +16,7 @@ function Testimonials() {
 
       <div className='w-full flex justify-between items-center md:flex-row flex-col sm:mb-16 mb-6 relative z-[1]'>
         <h1 className={styles.heading2}>
-          How its works? <br className='sm:block hidden' />
+          {t('how')} <br className='sm:block hidden' />
         </h1>
         <div className='w-full md:mt-0 mt-6'>
           <p className={`${styles.paragraph} text-left max-w-[450px]`}>
@@ -25,7 +27,7 @@ function Testimonials() {
       </div>
 
       <div className='flex flex-wrap sm:justify-start justify-center w-full feedback-container relative z-[1]'>
-        {feedback.map((card) => (
+        {feedback(t).map((card) => (
           <FeedbackCard
             key={card.id}
             {...card}

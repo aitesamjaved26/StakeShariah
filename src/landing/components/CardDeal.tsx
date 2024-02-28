@@ -2,33 +2,34 @@ import React from 'react';
 import { card } from '../../assets';
 import styles, { layout } from '../../style';
 import Button from './Button';
+import { useTranslation } from 'react-i18next';
 
-const CardDeal = () => (
-  <section
-    id='share&earn'
-    className={layout.section}
-  >
-    <div className={layout.sectionInfo}>
-      <h2 className={styles.heading2}>
-        Share and Earn <br className='sm:block hidden' />
-        instantly .
-      </h2>
-      <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-        Share Your link and earn instantly on every investment up to 11%, once
-        they use your link you will earn everytime they invest.
-      </p>
+function CardDeal() {
+  const { t } = useTranslation();
+  return (
+    <section
+      id='share&earn'
+      className={layout.section}
+    >
+      <div className={layout.sectionInfo}>
+        <h2 className={styles.heading2}>
+          {t('deal')} <br className='sm:block hidden' />
+          {t('deal2')}
+        </h2>
+        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>{t('deal3')}</p>
 
-      <Button styles='mt-10' />
-    </div>
+        <Button styles='mt-10' />
+      </div>
 
-    <div className={layout.sectionImg}>
-      <img
-        src={card}
-        alt='card'
-        className='w-[100%] h-[100%]'
-      />
-    </div>
-  </section>
-);
+      <div className={layout.sectionImg}>
+        <img
+          src={card}
+          alt='card'
+          className='w-[100%] h-[100%]'
+        />
+      </div>
+    </section>
+  );
+}
 
 export default CardDeal;

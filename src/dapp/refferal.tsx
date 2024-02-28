@@ -20,20 +20,17 @@ function RefferalUI({ status }: { status: UserStats }) {
   return (
     <section
       id='share&earn'
-      className={layout.section}
+      className={``}
     >
-      <div className={layout.sectionInfo}>
+      <div className={``}>
         {
           <div className=''>
-            <div className='flex flex-col gap-10 p-5 justify-center items-center'>
-              <div className='flex flex-col h-fit w-fit p-4 gap-5 shadow-2xl bg-white rounded-2xl'>
+            <div className='flex flex-col gap-10 p-2 justify-center items-center'>
+              <div className='flex flex-col h-auto w-fit gap-5 bg-white rounded-2xl'>
                 <div>
-                  <div className='text-2xl font-bold font-poppins'>
-                    Share & Earn
-                  </div>
                   <div>
                     Earn crypto rewards by referring friends! Share your unique
-                    link, they invest, you both get rewarded. Start now!
+                    link, You get rewarded. Start now!
                   </div>
                   <div className='mt-5'>
                     <div className='text-xl font-semibold'>
@@ -54,18 +51,18 @@ function RefferalUI({ status }: { status: UserStats }) {
 
                   <div className='mt-5'>
                     <div className='text-xl'>Refferal Levels : </div>
-                    <div className='text-2xl font-bold font-poppins'>
-                      Level1 : {`${status.refferalStatus['totalFriends'][0]}`}
+                    <div className='text-2xl font-medium font-poppins'>
+                      Level 1 : {`${status.refferalStatus['totalFriends'][0]}`}
                     </div>
-                    <div className='text-2xl font-bold font-poppins'>
-                      Level2 : {`${status.refferalStatus['totalFriends'][1]}`}
+                    <div className='text-2xl font-medium font-poppins'>
+                      Level 2 : {`${status.refferalStatus['totalFriends'][1]}`}
                     </div>
-                    <div className='text-2xl font-bold font-poppins'>
-                      Level3 : {`${status.refferalStatus['totalFriends'][2]}`}
+                    <div className='text-2xl font-medium font-poppins'>
+                      Level 3 : {`${status.refferalStatus['totalFriends'][2]}`}
                     </div>
                   </div>
                   <input
-                    className='w-full mt-5 h-14 p-2 border-none bg-gray-300 rounded-lg'
+                    className='w-full text-slate-600 mt-5 h-14 p-2 border-none bg-gray-300 rounded-lg'
                     readOnly
                     value={`stakeshariah.com/?ref=${address}`}
                   ></input>
@@ -86,14 +83,6 @@ function RefferalUI({ status }: { status: UserStats }) {
             </div>
           </div>
         }
-      </div>
-
-      <div className={layout.sectionImg}>
-        <img
-          src={card}
-          alt='card'
-          className='w-[100%] h-fit'
-        />
       </div>
     </section>
     // <div className=''>

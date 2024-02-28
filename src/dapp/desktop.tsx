@@ -26,7 +26,11 @@ import { HiArrowCircleUp, HiTable } from 'react-icons/hi';
 import { TiArrowRepeatOutline } from 'react-icons/ti';
 import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi';
 import readValues from '../models/core';
-import WithdrawDialog, { CapitalWithdrawD, ReinvestD, getBasePercent } from './actions';
+import WithdrawDialog, {
+  CapitalWithdrawD,
+  ReinvestD,
+  getBasePercent,
+} from './actions';
 import FAQSection from './faqs';
 import RefferalUI from './refferal';
 import TxPage from './tx';
@@ -36,6 +40,7 @@ import { navLinks } from '../constants/index';
 import { adminAddress, contractAddress } from '../models/contract';
 import React from 'react';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 /***
  *
  *
@@ -61,11 +66,10 @@ function DesktopUI() {
   const [isloading, SetLoading] = useState(true);
   const { isConnected, address } = useAccount();
 
-
   function getCurrentPage() {
     if (currentPage == 'Dashboard') {
       return <DashBoard status={status}></DashBoard>;
-    } else if (currentPage == 'Share & earn') {
+    } else if (currentPage == 'Referral Stats') {
       return <RefferalUI status={status}></RefferalUI>;
     } else if (currentPage == 'Transactions') {
       return <TxPage status={status}></TxPage>;
@@ -116,7 +120,7 @@ function DesktopUI() {
     {
       href: '#',
       icon: <AiOutlineDollar size={22}></AiOutlineDollar>,
-      txt: 'Share & earn',
+      txt: 'Referral Stats',
     },
     {
       href: 'https://t.me/StakeShariah',
@@ -158,7 +162,7 @@ function DesktopUI() {
     {
       href: '#',
       icon: <AiOutlineDollar size={22}></AiOutlineDollar>,
-      txt: 'Share & earn',
+      txt: 'Referral Stats',
     },
     {
       href: 'https://t.me/StakeShariah',
@@ -182,13 +186,18 @@ function DesktopUI() {
     },
   ];
   const mylistx = address == adminAddress ? mylistNav2 : mylistNav;
+  const { t } = useTranslation();
   function SideBarItem(txt, icon, href, isCurrent) {
     return (
       <li
         key={`nav_${txt}`}
         onClick={() => {
           if (href == '#') {
-            SetPage(txt);
+            if (txt == 'Referral Stats') {
+              setShowDialog(true);
+            } else {
+              SetPage(txt);
+            }
           } else {
             window.open(href);
           }
@@ -211,13 +220,26 @@ function DesktopUI() {
       </li>
     );
   }
+  const [showDialog, setShowDialog] = useState(false);
+
   return (
     <div
       id='desktop'
       className='font-Inter'
     >
       <Toaster position='top-center'></Toaster>
-
+      {showDialog && (
+        <Modal
+          show={showDialog}
+          position={'center'}
+          size={`xl`}
+          dismissible={true}
+          onClose={() => setShowDialog(false)}
+        >
+          <Modal.Header>{'Referral Status'}</Modal.Header>
+          <Modal.Body>{<RefferalUI status={status}></RefferalUI>}</Modal.Body>
+        </Modal>
+      )}
       <nav className='fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700'>
         <div className='px-3 py-3 lg:px-5 lg:pl-3'>
           <div className='flex items-center justify-between'>
@@ -258,7 +280,7 @@ function DesktopUI() {
                       <li
                         key={nav.href}
                         className={`font-poppins font-normal cursor-pointer text-[16px] ${
-                          index === navLinks.length - 1 ? 'mr-0' : 'mb-4'
+                          index === navLinks(t).length - 1 ? 'mr-0' : 'mb-4'
                         } text-white`}
                       >
                         <a
@@ -371,7 +393,7 @@ function DesktopUI() {
               </p>
               <div
                 className='cursor-pointer text-sm text-blue-800 underline font-medium hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300'
-                onClick={() => SetPage('Share & earn')}
+                onClick={() => setShowDialog(true)}
               >
                 Share Now
               </div>
@@ -404,10 +426,9 @@ function DashBoard({ status }: { status: UserStats }) {
   const [bnbPrice, setBnbPrice] = useState(0);
   const coinmarketcapApiKey = 'ab8ea359-3f69-43a3-8a97-b69174799ceb'; // Replace with your CoinMarketCap API key
   const apiUrl = `api.coincap.io/v2/assets/bitcoin`;
-  const [percent, setPercent] = useState("2.5");
+  const [percent, setPercent] = useState('2.5');
 
   const fetchBNBPrice = async () => {
-
     try {
       const response = await axios.get(
         'https://api.coincap.io/v2/assets/binance-coin'
@@ -429,13 +450,11 @@ function DashBoard({ status }: { status: UserStats }) {
     return ethAddress; // Return the original address if it's not in the expected format.
   }
 
-  const  updatePer = async ()=>{
-    console.log("PERCENT",await getBasePercent())
-    setPercent(await getBasePercent())
-  }
+  const updatePer = async () => {
+    getBasePercent().then((val) => setPercent(val.toString()));
+  };
 
   useEffect(() => {
-    getBasePercent();
     fetchBNBPrice();
     updatePer();
   }, []);
@@ -536,8 +555,7 @@ function DashBoard({ status }: { status: UserStats }) {
                 </div>
               </div>
               <div className='text-zinc-600'>
-                ~ {(Number(status.getUserTotalWithdrawn) * bnbPrice).toFixed(2)}{' '}
-                $
+                ~ {(Number(status.totalEarned) * bnbPrice).toFixed(5)} $
               </div>
             </div>
           </div>
@@ -573,7 +591,9 @@ function DashBoard({ status }: { status: UserStats }) {
                 </p>
               </div>
               <div className='flex flex-row justify-between items-center'>
-                <div className='text-xl md:text-3xl font-bold'>{percent} ROI</div>
+                <div className='text-xl md:text-3xl font-bold'>
+                  {percent} ROI
+                </div>
               </div>
             </div>
           </div>

@@ -1,18 +1,19 @@
 import React from 'react';
 import styles from './style';
 import { configureChains, createConfig, useAccount, WagmiConfig } from 'wagmi';
+import './i18n'; // Import the i18n setup file
 
 import {
   Navbar,
   Hero,
   Stats,
   Billing,
-  CardDeal,
   Testimonials,
   Business,
   Clients,
   CTA,
   Footer,
+  CardDeal,
 } from './landing/components';
 import { bsc } from 'wagmi/chains';
 
@@ -24,6 +25,7 @@ import {
 import { Web3Modal } from '@web3modal/react';
 import DesktopUI from './dapp/desktop';
 import { contractAddress } from './models/contract';
+import i18n from './i18n';
 
 /**
  *
@@ -65,25 +67,26 @@ function HomePage() {
   }
   return (
     <div className='bg-primary w-full overlow-hidden'>
-      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-        <div className={`${styles.boxWidth}`}>
-          <Navbar />
-        </div>
-      </div>
+      <div className={`${styles.paddingX} ${styles.flexCenter}`}></div>
 
-      <div className={`bg-primary ${styles.flexStart}`}>
+      <div className={`bg-gradient-to-tr from-indigo-500 ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
+          <div className={`mr-5 md:mr-10 ml-5 md:ml-10`}>
+            <Navbar />
+          </div>
           <Hero />
         </div>
       </div>
 
-      <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
+      <div className={`${styles.paddingX} ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           {/* Components */}
-          {/* <Stats /> */}
+          <div className='mt-10'>
+            <Stats />
+          </div>
           <Business />
           <Billing />
-          <CardDeal />
+          <CardDeal></CardDeal>
           <Testimonials />
           {/* <Clients /> */}
           <CTA />
@@ -102,7 +105,9 @@ function CX() {
         className='h-44 w-fit cursor-pointer'
         src='bnb_banner.png'
         onClick={() => {
-          window.open(`https://bscscan.com/address/0x1adb950d8bb3da4be104211d5ab038628e477fe6`);
+          window.open(
+            `https://bscscan.com/address/0x1adb950d8bb3da4be104211d5ab038628e477fe6`
+          );
         }}
       ></img>
       <img

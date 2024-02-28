@@ -1,6 +1,7 @@
 import styles from '../../style';
 import { arrowUp } from '../../assets';
 import { useWeb3Modal } from '@web3modal/react';
+import React from 'react';
 
 function GetStarted() {
   const { open } = useWeb3Modal();
