@@ -133,11 +133,7 @@ function DesktopUI() {
       ),
       txt: 'Community',
     },
-    // {
-    //   href: '#',
-    //   icon: <AiOutlineQuestion size={22}></AiOutlineQuestion>,
-    //   txt: 'FAQS',
-    // },
+
     {
       href: 'https://bscscan.com/address/0x54866a92b621f63cb36c7213442e7d811387cd7e',
       icon: <FaFileContract size={20}></FaFileContract>,

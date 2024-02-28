@@ -32,6 +32,9 @@ function TxPage({ status }: { status: UserStats }) {
       console.error('Error fetching BNB price:', error);
     }
   };
+  useEffect(() => {
+    fetchBNBPrice();
+  });
   return (
     <div className='min-w-full'>
       <div className='flex flex-row justify-start items-center'>

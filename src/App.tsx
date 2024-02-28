@@ -53,6 +53,9 @@ const App = () => (
     <Web3Modal
       projectId={projectId}
       //defaultChain={bsc}
+      themeVariables={{
+        '--w3m-background-color': 'indigo',
+      }}
       ethereumClient={ethereumClient}
     />
   </>

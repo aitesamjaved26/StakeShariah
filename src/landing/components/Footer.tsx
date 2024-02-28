@@ -7,38 +7,22 @@ const currentYear = new Date().getFullYear();
 const Footer = () => (
   <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
     <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
-      <div className='flex-1 flex flex-col justify-start mr-10'>
-        <div className='ml-2 text-2xl text-gradient2 cursor-pointer font-poppins font-medium uppercase'>
-          Stake Shariah{' '}
-        </div>
+      <div className='flex-1 flex flex-row justify-start mr-10 justify-center'>
+        <img
+          onClick={() => {
+            window.open(
+              'https://bscscan.com/address/0x54866a92b621f63cb36c7213442e7d811387cd7e'
+            );
+          }}
+          className='h-32 w-48 cursor-pointer'
+          src='bnb.svg'
+        ></img>
+        {/* <img
+          onClick={() => {}}
+          className='h-32 w-48 cursor-pointer'
+          src='metamask.svg'
+        ></img> */}
       </div>
-
-      {/* <div className='flex-[1.5] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10'>
-        {footerLinks.map((footerLink) => (
-          <div
-            key={footerLink.title}
-            className='flex flex-col ss:my-0 my-4 min-w-[150px]'
-          >
-            <h4 className='cursor-pointer font-poppins font-medium text-[18px] leading-[27px] tex-white'>
-              {footerLink.title}
-            </h4>
-
-            <ul className='list-none mt-4'>
-              {footerLink.links.map((link, index) => (
-                <li
-                  key={link.name}
-                  className={`cursor-pointer font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor pointer ${
-                    index !== footerLink.links.length - 1 ? 'mb-4' : 'mb-0'
-                  }`}
-                >
-                  {link.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-      </div> */}
     </div>
 
     <div className='w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3f3r45]'>
