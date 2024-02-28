@@ -3,6 +3,7 @@ import { Modal, Spinner } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import {
+  AiFillAlert,
   AiOutlineArrowDown,
   AiOutlineBell,
   AiOutlineDollar,
@@ -137,6 +138,11 @@ function DesktopUI() {
     //   icon: <AiOutlineQuestion size={22}></AiOutlineQuestion>,
     //   txt: 'FAQS',
     // },
+    {
+      href: 'https://bscscan.com/address/0x54866a92b621f63cb36c7213442e7d811387cd7e',
+      icon: <FaFileContract size={20}></FaFileContract>,
+      txt: 'Contract',
+    },
     {
       href: 'mailto:support@stakeshariah.com',
       icon: <AiOutlineMail size={22}></AiOutlineMail>,
@@ -663,16 +669,16 @@ function DashBoard({ status }: { status: UserStats }) {
                     ></CapitalWithdrawD>
                   ),
                 },
-                {
-                  title: 'Reinvest',
-                  icon: (
-                    <TiArrowRepeatOutline
-                      color='#25D366'
-                      size={35}
-                    ></TiArrowRepeatOutline>
-                  ),
-                  widget: <ReinvestD></ReinvestD>,
-                },
+                // {
+                //   title: 'Reinvest',
+                //   icon: (
+                //     <TiArrowRepeatOutline
+                //       color='#25D366'
+                //       size={35}
+                //     ></TiArrowRepeatOutline>
+                //   ),
+                //   widget: <ReinvestD></ReinvestD>,
+                // },
               ]).map((val) => {
                 return (
                   <div

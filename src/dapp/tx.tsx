@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { UserStats } from './wallet';
 import { ethers } from 'ethers';
 import React from 'react';
+import axios from 'axios';
 function TxWidget({ value, dollar, date, bnbPrice }) {
   return (
     <div className='flex flex-row justify-between items-start p-2'>
@@ -14,8 +15,23 @@ function TxWidget({ value, dollar, date, bnbPrice }) {
   );
 }
 function TxPage({ status }: { status: UserStats }) {
-  const [currentTab, setTab] = useState('Deposits');
+  const [bnbPrice, setBnbPrice] = useState(0);
 
+  const [currentTab, setTab] = useState('Deposits');
+  const fetchBNBPrice = async () => {
+    try {
+      const response = await axios.get(
+        'https://api.coincap.io/v2/assets/binance-coin'
+      );
+
+      if (response.data) {
+        const price = response.data.data.priceUsd;
+        setBnbPrice(price);
+      }
+    } catch (error) {
+      console.error('Error fetching BNB price:', error);
+    }
+  };
   return (
     <div className='min-w-full'>
       <div className='flex flex-row justify-start items-center'>
@@ -86,7 +102,7 @@ function TxPage({ status }: { status: UserStats }) {
           const minutes = String(date.getMinutes()).padStart(2, '0');
           return (
             <TxWidget
-              bnbPrice={213}
+              bnbPrice={bnbPrice}
               key={`{tx_${val}}`}
               date={`${monthName} ${day} ${year} ${hours}:${minutes}`}
               value={`${Number(

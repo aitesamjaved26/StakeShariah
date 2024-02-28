@@ -1,3 +1,4 @@
+import { FaTwitter } from 'react-icons/fa';
 import {
   airbnb,
   binance,
@@ -6,6 +7,7 @@ import {
   send,
   shield,
   star,
+  facebook,
 } from '../assets';
 
 export function navLinks(t) {
@@ -148,6 +150,12 @@ export const socialMedia = [
     id: 'social-media-4',
     icon: send,
     link: 'https://t.me/StakeShariah',
+  },
+
+  {
+    id: 'social-media5',
+    icon: facebook,
+    link: 'https://www.facebook.com/stakeshariah',
   },
 ];
 

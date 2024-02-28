@@ -39,19 +39,6 @@ const Footer = () => (
         ))}
       </div>
       </div> */}
-      <div>
-        <a
-          href='/presentation.pdf'
-          download
-        >
-          <button
-            type='button'
-            className='py-4 px-6 bg-green-gradient font-poppins font-medium text-[18px] text-white outline-none rounded-lg mt-4'
-          >
-            Presentation
-          </button>
-        </a>
-      </div>
     </div>
 
     <div className='w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3f3r45]'>
