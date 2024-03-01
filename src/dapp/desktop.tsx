@@ -135,7 +135,7 @@ function DesktopUI() {
     },
 
     {
-      href: 'https://bscscan.com/address/0x54866a92b621f63cb36c7213442e7d811387cd7e',
+      href: `https://bscscan.com/address/${contractAddress}`,
       icon: <FaFileContract size={20}></FaFileContract>,
       txt: 'Contract',
     },

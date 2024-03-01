@@ -108,9 +108,7 @@ function CX() {
         className='h-44 w-fit cursor-pointer'
         src='bnb_banner.png'
         onClick={() => {
-          window.open(
-            `https://bscscan.com/address/0x1adb950d8bb3da4be104211d5ab038628e477fe6`
-          );
+          window.open(`https://bscscan.com/address/${contractAddress}`);
         }}
       ></img>
       <img
