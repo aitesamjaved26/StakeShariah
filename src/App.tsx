@@ -26,6 +26,7 @@ import { Web3Modal } from '@web3modal/react';
 import DesktopUI from './dapp/desktop';
 import { contractAddress } from './models/contract';
 import i18n from './i18n';
+import { LogoLinks } from './landing/components/Footer';
 
 /**
  *
@@ -94,6 +95,7 @@ function HomePage() {
           {/* <Clients /> */}
           <CTA />
           {/* <CX></CX> */}
+          <LogoLinks></LogoLinks>
           <Footer />
         </div>
       </div>
