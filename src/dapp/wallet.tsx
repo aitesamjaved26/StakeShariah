@@ -439,7 +439,7 @@ export function InvestUI({ onCancel }) {
                   placeholder='Amount in BNB'
                 />
               </label>
-              {refAddrr != null && <label>Your refferal address</label>}
+              {refAddrr != null && <label>Your referral address</label>}
               {refAddrr != null && (
                 <div>{`\n ${shortenEthAddress(getRefAddress())}`}</div>
               )}
