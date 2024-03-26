@@ -3,7 +3,8 @@ import { contractABI, contractAddress } from './contract';
 import { readContracts } from 'wagmi';
 import { UserStats } from '@/dapp/wallet';
 
-export async function readValues(selectedAccount) {
+export async function readValues(account) {
+  var selectedAccount = account;
   // Convert Tron address to hexadecimal format
   const myContract: any = {
     address: contractAddress,
@@ -23,7 +24,7 @@ export async function readValues(selectedAccount) {
       },
       {
         ...myContract,
-        functionName: 'getUserReferralsStats',
+        functionName: 'getReferralStats',
         args: [selectedAccount],
       },
       {
@@ -41,20 +42,46 @@ export async function readValues(selectedAccount) {
         functionName: 'getBASEPERCENT',
         args: [],
       },
+      {
+        ...myContract,
+        functionName: 'getUserReferralWithdrawn',
+        args: [selectedAccount],
+      },
+      //getReferralStats
+      {
+        ...myContract,
+        functionName: 'getReferralStats',
+        args: [selectedAccount],
+      },
+      {
+        ...myContract,
+        functionName: 'referralRewards',
+        args: [selectedAccount],
+      },
+      {
+        ...myContract,
+        functionName: 'getUserReferralWithdrawn',
+        args: [selectedAccount],
+      },
+      {
+        ...myContract,
+        functionName: 'referrers',
+        args: [selectedAccount],
+      },
     ],
   });
-  var totalrefs = data[2].result[2] as any;
+  //var totalrefs = data[2].result[2] as any;
   const user: UserStats = {
-    BASE_PERCENT: 2.5,
+    BASE_PERCENT: Number(ethers.utils.formatEther(data[5].result as any)),
     totalEarned: Number(
       ethers.utils.formatEther(data[4].result['totalEarned'] as any)
     ).toFixed(4),
-    getUserStats: '',
-    getUserReferralsStats: '',
-    referral: `${data[2].result[0]}`,
+    // getUserStats: '',
+    // getUserReferralsStats: '',
     profit: Number(ethers.utils.formatEther(data[0].result[0] as any)).toFixed(
       6
     ),
+    referral: `${data[10].result}`,
     getUserTotalDeposits: Number(
       ethers.utils.formatEther(BigNumber.from(data[0].result[1]) as any)
     ).toFixed(4),
@@ -62,21 +89,25 @@ export async function readValues(selectedAccount) {
       ethers.utils.formatUnits(data[0].result[1] as any, 'wei')
     ).toFixed(4),
     refferalStatus: {
-      level: `${data[2].result[2]}`,
-      total: Number(
-        ethers.utils.formatEther(BigNumber.from(data[2].result[3]) as any)
+      getUserReferralWithdrawn: Number(
+        ethers.utils.formatEther(data[9].result as any)
       ).toFixed(4),
-      totalFriends: totalrefs,
+      total: Number(
+        ethers.utils.formatEther(
+          BigNumber.from(data[4].result['totalReferralRewards']) as any
+        )
+      ).toFixed(4),
+      totalFriends: `${data[7].result}`,
       referralEarnings: Number(
-        ethers.utils.formatEther(data[2].result[1] as any)
+        ethers.utils.formatEther(data[8].result as any)
       ).toFixed(4),
     },
     getUserTotalWithdrawn: Number(
       ethers.utils.formatEther(data[0].result[2] as any)
     ).toFixed(4),
-    userdata: null,
+    // userdata: null,
     deposits: data[4].result['deposits'],
-    withdrawals: [],
+    // withdrawals: [],
   };
   return user;
 }

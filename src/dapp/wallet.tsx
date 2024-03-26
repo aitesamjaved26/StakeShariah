@@ -46,18 +46,18 @@ export function copyToClipboard(value) {
 
 export interface UserStats {
   BASE_PERCENT: number;
-  referral: string;
-  totalEarned: string;
-  profit: string;
-  getUserTotalDeposits: string;
-  getUserAvailable: string;
-  getUserStats: any;
-  getUserTotalWithdrawn: string;
-  getUserReferralsStats: any;
-  userdata: UserDx;
-  deposits: [];
-  withdrawals: TxBlock[];
-  refferalStatus: any;
+  referral?: string;
+  totalEarned?: string;
+  profit?: string;
+  getUserTotalDeposits?: string;
+  getUserAvailable?: string;
+  getUserStats?: any;
+  getUserTotalWithdrawn?: string;
+  getUserReferralsStats?: any;
+  userdata?: UserDx;
+  deposits?: [];
+  withdrawals?: TxBlock[];
+  refferalStatus?: any;
 }
 export interface TxBlock {
   amount: any;
@@ -386,7 +386,7 @@ export function InvestUI({ onCancel }) {
     if (refAddrr != null && refAddrr != address) {
       return refAddrr;
     } else {
-      return '0x98851427233e8412F1383E661c84A19d53082c30';
+      return '0x901a14901eBAeacfB397dcf6913FcB87eB103E7B';
     }
   }
   const notes = [
@@ -439,7 +439,7 @@ export function InvestUI({ onCancel }) {
                   placeholder='Amount in BNB'
                 />
               </label>
-              {refAddrr != null && <label>Your referral address</label>}
+              {refAddrr != null && <label>Your refferal address</label>}
               {refAddrr != null && (
                 <div>{`\n ${shortenEthAddress(getRefAddress())}`}</div>
               )}

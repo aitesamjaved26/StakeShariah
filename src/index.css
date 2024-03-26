@@ -150,3 +150,69 @@
   background: rgba(255, 255, 255, 0.6);
   filter: blur(750px);
 }
+.template-card2 {
+  overflow: hidden;
+  background-image: radial-gradient(
+      46.99% 43.05% at 2.58% 100%,
+      rgba(46, 48, 56, 0.4) 0,
+      transparent 100%
+    ),
+    radial-gradient(
+      55.18% 55.16% at 12.42% -3.42%,
+      rgba(112, 220, 211, 0.3) 0,
+      transparent 100%
+    );
+  background-color: rgb(13 14 18 / 1);
+  border-bottom-style: solid;
+  border-bottom-width: 0px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgba(0, 0, 0, 0);
+  border-left-style: solid;
+  border-left-width: 0px;
+  border-right-color: rgba(0, 0, 0, 0);
+  border-right-style: solid;
+  border-right-width: 0px;
+  border-top-color: rgba(0, 0, 0, 0);
+  border-top-style: solid;
+  border-top-width: 0px;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0);
+  border-radius: 16px;
+}
+.template-card3 {
+  overflow: hidden;
+  background-image: radial-gradient(
+      46.99% 43.05% at 2.58% 100%,
+      rgba(46, 48, 56, 0.4) 0,
+      transparent 100%
+    ),
+    radial-gradient(
+      55.18% 55.16% at 20% -5.42%,
+      rgba(207, 216, 32, 0.3) 0,
+      transparent 100%
+    );
+  background-color: rgb(13 14 18 / 1);
+  border-bottom-style: solid;
+  border-bottom-width: 0px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgba(0, 0, 0, 0);
+  border-left-style: solid;
+  border-left-width: 0px;
+  border-right-color: rgba(0, 0, 0, 0);
+  border-right-style: solid;
+  border-right-width: 0px;
+  border-top-color: rgba(0, 0, 0, 0);
+  border-top-style: solid;
+  border-top-width: 0px;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0);
+  border-radius: 16px;
+}

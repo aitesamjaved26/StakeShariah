@@ -14,14 +14,14 @@ function CTA() {
 
     {
       title: 'Processing Fee',
-      content: `At Stake Shariah, we believe in being transparent about all fees and charges associated with our platform. We charge 3% on deposits 
+      content: `At Stake Shariah, we believe in being transparent about all fees and charges associated with our platform. We charge 5% on deposits 
         For withdrawal requests, we charge a small processing fee of 5% on the requested amount. This fee helps us cover the costs associated with processing your withdrawal request, including transaction fees and administrative costs
         Please note that the processing fee is deducted from the withdrawal amount, and the remaining amount will be credited to your BNB wallet. For example, if you request a withdrawal of 1 BNB, the processing fee will be 0.05 BNB, and you will receive 0.95 BNB in your wallet`,
     },
     {
       title: 'Why the Balance on contract is always low?',
       content:
-        "Traditional Ponzi schemes trap money within the contract, simply moving it between users to create an illusion of growth. StakeShariah operates differently. Your investment, minus the referral bonus, is allocated to two separate wallets: one for administration and one for marketing. These funds are used to generate real profits through StakeShariah's own revenue streams, which are then distributed back to users transparently and fairly",
+        "Traditional contracts trap money within the contract, simply moving it between users to create an illusion of growth. StakeShariah operates differently. Your investment, minus the referral bonus, is allocated to two separate wallets: one for administration and one for marketing. These funds are used to generate real profits through StakeShariah's own revenue streams, which are then distributed back to users transparently and fairly",
     },
 
     {

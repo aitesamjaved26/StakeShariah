@@ -1,10 +1,49 @@
 import { useAccount } from 'wagmi';
 import { UserStats, copyToClipboard } from './wallet';
 import React from 'react';
-import { card } from '../assets';
-import { layout } from '../style';
+
+import toast from 'react-hot-toast';
+import { prepareWriteContract, writeContract, getContract } from '@wagmi/core';
+import { contractAddress, contractABI, myChainId } from '../models/contract';
 
 function RefferalUI({ status }: { status: UserStats }) {
+  async function callWithdraw() {
+    await toast.loading('please wait', {
+      duration: 2000,
+    });
+    const contract = getContract({
+      address: contractAddress as any,
+      abi: contractABI,
+    });
+    try {
+      const gas = await contract.estimateGas.claim({
+        account: address,
+        args: [],
+      });
+      const { request } = await prepareWriteContract({
+        chainId: myChainId,
+        //@ts-ignore
+        address: contractAddress,
+        //@ts-ignore
+        abi: contractABI,
+        //@ts-ignore
+        functionName: 'withdrawReferralRewards',
+        //@ts-ignore
+        gas: gas,
+        //@ts-ignore
+        account: address,
+        //@ts-ignore
+        args: [],
+      });
+      const { hash } = await writeContract(request);
+      toast.success('Done! You will receive your funds within minutes!', {
+        duration: 5000,
+      });
+      console.log('rx', gas);
+    } catch (e) {
+      toast.error(`${e}`);
+    }
+  }
   const { address } = useAccount();
   function getUserLevel(refs: number[]): number {
     for (let i = 0; i < refs.length; i++) {
@@ -20,7 +59,7 @@ function RefferalUI({ status }: { status: UserStats }) {
   return (
     <section
       id='share&earn'
-      className={``}
+      className={'overflow-hidden'}
     >
       <div className={``}>
         {
@@ -41,11 +80,28 @@ function RefferalUI({ status }: { status: UserStats }) {
                     </div>
                   </div>
                   <div className='mt-5'>
+                    <div
+                      onClick={() => callWithdraw()}
+                      className='bg-gradient-to-br from-blue-400 to-blue-600 text-white rounded w-24 p-2 flex flex-col justify-center items-center text-center'
+                    >
+                      Withdraw
+                    </div>
+                  </div>
+                  {/* <div className='mt-5'>
                     <div className='text-xl font-semibold'>
                       Total Referral rewards:
                     </div>
                     <div className='text-2xl font-bold font-poppins'>
                       {`${status.refferalStatus['total']}`} BNB
+                    </div>
+                  </div> */}
+                  <div className='mt-5'>
+                    <div className='text-xl font-semibold'>
+                      Total Referral Withdrawn:
+                    </div>
+                    <div className='text-2xl font-bold font-poppins'>
+                      {`${status.refferalStatus['getUserReferralWithdrawn']}`}{' '}
+                      BNB
                     </div>
                   </div>
 
@@ -67,7 +123,7 @@ function RefferalUI({ status }: { status: UserStats }) {
                     value={`stakeshariah.com/?ref=${address}`}
                   ></input>
                 </div>
-                <div className='flex flex-col justify-center items-center mt-5 mb-5'>
+                <div className='flex flex-col justify-center items-center mt-10 mb-5'>
                   <button
                     //className={styles.stakeButton2}
                     // onClick={() => withdrawToken(account)}
@@ -79,6 +135,7 @@ function RefferalUI({ status }: { status: UserStats }) {
                     Copy Link
                   </button>
                 </div>
+                <div className='h-42'></div>
               </div>
             </div>
           </div>

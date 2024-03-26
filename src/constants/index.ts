@@ -22,7 +22,7 @@ export function navLinks(t) {
     },
     {
       id: 'share&earn',
-      title: t('Referral'),
+      title: t('Refferal'),
     },
     {
       id: 'clients',

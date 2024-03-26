@@ -19,7 +19,7 @@ function FAQSection() {
     {
       title: 'Why the Balance on contract is always low?',
       content:
-        "Traditional Ponzi schemes trap money within the contract, simply moving it between users to create an illusion of growth. StakeShariah operates differently. Your investment, minus the referral bonus, is allocated to two separate wallets: one for administration and one for marketing. These funds are used to generate real profits through StakeShariah's own revenue streams, which are then distributed back to users transparently and fairly",
+        "Traditional contracts trap money within the contract, simply moving it between users to create an illusion of growth. StakeShariah operates differently. Your investment, minus the referral bonus, is allocated to two separate wallets: one for administration and one for marketing. These funds are used to generate real profits through StakeShariah's own revenue streams, which are then distributed back to users transparently and fairly",
     },
 
     {

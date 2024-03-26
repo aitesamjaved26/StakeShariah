@@ -232,14 +232,17 @@ function DesktopUI() {
       <Toaster position='top-center'></Toaster>
       {showDialog && (
         <Modal
+          className='overflow-hidden'
           show={showDialog}
           position={'center'}
-          size={`xl`}
+          size={`2xl`}
           dismissible={true}
           onClose={() => setShowDialog(false)}
         >
           <Modal.Header>{'Referral Status'}</Modal.Header>
-          <Modal.Body>{<RefferalUI status={status}></RefferalUI>}</Modal.Body>
+          <Modal.Body className='overflow-hidden'>
+            {<RefferalUI status={status}></RefferalUI>}
+          </Modal.Body>
         </Modal>
       )}
       <nav className='fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700'>
@@ -483,7 +486,7 @@ function DashBoard({ status }: { status: UserStats }) {
             <div className='flex flex-col'>
               <div>
                 <p className='text-sm md:tex-xl font-semibold font-poppins text-gray-500'>
-                  Available withdraw
+                  Staking Rewards
                 </p>
               </div>
               <div className='flex flex-row justify-between items-center'>
@@ -503,7 +506,7 @@ function DashBoard({ status }: { status: UserStats }) {
             <div className='flex flex-col'>
               <div>
                 <p className='text-sm md:tex-xl font-semibold font-poppins text-gray-500'>
-                  Total deposits
+                  Total Staked
                 </p>
               </div>
               <div className='flex flex-row justify-between items-center'>
@@ -593,9 +596,7 @@ function DashBoard({ status }: { status: UserStats }) {
                 </p>
               </div>
               <div className='flex flex-row justify-between items-center'>
-                <div className='text-xl md:text-3xl font-bold'>
-                  {percent} ROI
-                </div>
+                <div className='text-xl md:text-3xl font-bold'>{`${percent} %`}</div>
               </div>
             </div>
           </div>

@@ -4,8 +4,8 @@
  *
  */
 ///
-export let contractAddress = '0x54866a92B621F63cb36c7213442e7d811387CD7E';
-export let adminAddress = '0x26bAa28050bBB9D8A2895beE5bafb2aE3F0e199B';
+export let contractAddress = '0x6a109059eb8faf28cd8bd32b6b321a04b8233bf2';
+export let adminAddress = '0xaa4bd601b9b692997D9f098892bcDD9ca574Aa46';
 export let myChainId = 56;
 
 ///
@@ -17,19 +17,11 @@ export let contractABI = [
         name: 'marketingAddr',
         type: 'address',
       },
+      { internalType: 'address payable', name: 'projectAddr', type: 'address' },
+      { internalType: 'address payable', name: 'dev', type: 'address' },
       {
         internalType: 'address payable',
-        name: 'projectAddr',
-        type: 'address',
-      },
-      {
-        internalType: 'address payable',
-        name: 'dev',
-        type: 'address',
-      },
-      {
-        internalType: 'address payable',
-        name: 'maintainer',
+        name: 'maintenanceAdd',
         type: 'address',
       },
     ],
@@ -39,76 +31,23 @@ export let contractABI = [
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'addr',
-        type: 'address',
-      },
+      { indexed: true, internalType: 'address', name: 'addr', type: 'address' },
     ],
-    name: 'AddressFreezed',
+    name: 'AddressBlacklisted',
     type: 'event',
   },
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'addr',
-        type: 'address',
-      },
+      { indexed: true, internalType: 'address', name: 'addr', type: 'address' },
     ],
-    name: 'AddressUnfreeze',
+    name: 'AddressUnblacklisted',
     type: 'event',
   },
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'user',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'bool',
-        name: 'approve',
-        type: 'bool',
-      },
-    ],
-    name: 'Approved',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'user',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'bool',
-        name: 'approve',
-        type: 'bool',
-      },
-    ],
-    name: 'Disapproved',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'user',
-        type: 'address',
-      },
+      { indexed: true, internalType: 'address', name: 'user', type: 'address' },
       {
         indexed: false,
         internalType: 'uint256',
@@ -122,12 +61,7 @@ export let contractABI = [
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'user',
-        type: 'address',
-      },
+      { indexed: true, internalType: 'address', name: 'user', type: 'address' },
       {
         indexed: false,
         internalType: 'uint256',
@@ -185,6 +119,34 @@ export let contractABI = [
   {
     anonymous: false,
     inputs: [
+      { indexed: true, internalType: 'address', name: 'user', type: 'address' },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'referrer',
+        type: 'address',
+      },
+    ],
+    name: 'Referral',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: 'address', name: 'user', type: 'address' },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
+      },
+    ],
+    name: 'ReferralWithdrawn',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
       {
         indexed: false,
         internalType: 'address',
@@ -222,12 +184,7 @@ export let contractABI = [
         name: 'amount',
         type: 'uint256',
       },
-      {
-        indexed: false,
-        internalType: 'bool',
-        name: 'approved',
-        type: 'bool',
-      },
+      { indexed: false, internalType: 'bool', name: 'approved', type: 'bool' },
       {
         indexed: true,
         internalType: 'bytes32',
@@ -241,12 +198,7 @@ export let contractABI = [
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'user',
-        type: 'address',
-      },
+      { indexed: true, internalType: 'address', name: 'user', type: 'address' },
       {
         indexed: false,
         internalType: 'uint256',
@@ -260,194 +212,94 @@ export let contractABI = [
   {
     inputs: [],
     name: 'BASE_PERCENT',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'CONTRACT_BALANCE_STEP',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
-    name: 'DEV_FEE',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    name: 'DepositFees',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'INVEST_MIN_AMOUNT',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'MARKETING_FEE',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'Maintenance_FEE',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'PERCENTS_DIVIDER',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'PROJECT_FEE',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'REFERRAL_PERCENTS',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'TIME_STEP',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: 'requestId',
-        type: 'uint256',
-      },
-    ],
+    inputs: [],
+    name: 'WithdrawFees',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'uint256', name: 'requestId', type: 'uint256' }],
     name: 'approveCapitalWithdrawal',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    inputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    name: 'blacklistedAddresses',
+    outputs: [{ internalType: 'address', name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     name: 'capitalWithdrawalRequests',
     outputs: [
-      {
-        internalType: 'uint256',
-        name: 'id',
-        type: 'uint256',
-      },
-      {
-        internalType: 'address',
-        name: 'user',
-        type: 'address',
-      },
-      {
-        internalType: 'uint256',
-        name: 'amount',
-        type: 'uint256',
-      },
-      {
-        internalType: 'bool',
-        name: 'approved',
-        type: 'bool',
-      },
+      { internalType: 'uint256', name: 'id', type: 'uint256' },
+      { internalType: 'address', name: 'user', type: 'address' },
+      { internalType: 'uint256', name: 'amount', type: 'uint256' },
+      { internalType: 'bool', name: 'approved', type: 'bool' },
     ],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'newOwner',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'newOwner', type: 'address' }],
     name: 'changeOwnership',
     outputs: [],
     stateMutability: 'nonpayable',
@@ -462,13 +314,6 @@ export let contractABI = [
   },
   {
     inputs: [],
-    name: 'compound',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [],
     name: 'deposit',
     outputs: [],
     stateMutability: 'payable',
@@ -477,46 +322,22 @@ export let contractABI = [
   {
     inputs: [],
     name: 'developerAddress',
-    outputs: [
-      {
-        internalType: 'address payable',
-        name: '',
-        type: 'address',
-      },
-    ],
+    outputs: [{ internalType: 'address payable', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'addr',
-        type: 'address',
-      },
-    ],
+    inputs: [],
+    name: 'firstLevelBonus',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: 'addr', type: 'address' }],
     name: 'freezeAddress',
     outputs: [],
     stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'freezedAddresses',
-    outputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'view',
     type: 'function',
   },
   {
@@ -525,26 +346,10 @@ export let contractABI = [
     outputs: [
       {
         components: [
-          {
-            internalType: 'uint256',
-            name: 'id',
-            type: 'uint256',
-          },
-          {
-            internalType: 'address',
-            name: 'user',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-          {
-            internalType: 'bool',
-            name: 'approved',
-            type: 'bool',
-          },
+          { internalType: 'uint256', name: 'id', type: 'uint256' },
+          { internalType: 'address', name: 'user', type: 'address' },
+          { internalType: 'uint256', name: 'amount', type: 'uint256' },
+          { internalType: 'bool', name: 'approved', type: 'bool' },
         ],
         internalType: 'struct StakeShariah.CapitalWithdrawalRequest[]',
         name: '',
@@ -557,146 +362,61 @@ export let contractABI = [
   {
     inputs: [],
     name: 'getBASEPERCENT',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'getContractBalance',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
-    name: 'getTx',
-    outputs: [
-      {
-        components: [
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-          {
-            internalType: 'uint256',
-            name: 'withdrawn',
-            type: 'uint256',
-          },
-          {
-            internalType: 'uint256',
-            name: 'start',
-            type: 'uint256',
-          },
-        ],
-        internalType: 'struct StakeShariah.Deposit[]',
-        name: '',
-        type: 'tuple[]',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: '_user', type: 'address' }],
+    name: 'getReferralCount',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'add',
-        type: 'address',
-      },
-    ],
-    name: 'getUplinePartner',
-    outputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: '_user', type: 'address' }],
+    name: 'getReferralStats',
+    outputs: [{ internalType: 'uint256[]', name: '', type: 'uint256[]' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'add',
-        type: 'address',
-      },
-    ],
+    inputs: [],
+    name: 'getTotalReferralRewards',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: 'add', type: 'address' }],
     name: 'getUser',
     outputs: [
       {
         components: [
           {
             components: [
-              {
-                internalType: 'uint256',
-                name: 'amount',
-                type: 'uint256',
-              },
-              {
-                internalType: 'uint256',
-                name: 'withdrawn',
-                type: 'uint256',
-              },
-              {
-                internalType: 'uint256',
-                name: 'start',
-                type: 'uint256',
-              },
+              { internalType: 'uint256', name: 'amount', type: 'uint256' },
+              { internalType: 'uint256', name: 'withdrawn', type: 'uint256' },
+              { internalType: 'uint256', name: 'start', type: 'uint256' },
             ],
             internalType: 'struct StakeShariah.Deposit[]',
             name: 'deposits',
             type: 'tuple[]',
           },
-          {
-            internalType: 'address',
-            name: 'referrer',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'bonus',
-            type: 'uint256',
-          },
+          { internalType: 'address', name: 'referrer', type: 'address' },
+          { internalType: 'uint256', name: 'bonus', type: 'uint256' },
+          { internalType: 'uint256', name: 'checkpoint', type: 'uint256' },
+          { internalType: 'uint256', name: 'totalEarned', type: 'uint256' },
           {
             internalType: 'uint256',
-            name: 'checkpoint',
-            type: 'uint256',
-          },
-          {
-            internalType: 'uint256',
-            name: 'totalEarned',
-            type: 'uint256',
-          },
-          {
-            internalType: 'uint24[3]',
-            name: 'refs',
-            type: 'uint24[3]',
-          },
-          {
-            internalType: 'uint256',
-            name: 'totalBonus',
+            name: 'totalReferralRewards',
             type: 'uint256',
           },
         ],
@@ -709,255 +429,62 @@ export let contractABI = [
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'userAddress', type: 'address' }],
     name: 'getUserAmountOfDeposits',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'userAddress', type: 'address' }],
     name: 'getUserAvailable',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'userAddress', type: 'address' }],
     name: 'getUserPercentRate',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
-    name: 'getUserReferralBonus',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'userAddress', type: 'address' }],
+    name: 'getUserReferralWithdrawn',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
-    name: 'getUserReferralTotalBonus',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
-    name: 'getUserReferralsStats',
-    outputs: [
-      {
-        internalType: 'address',
-        name: 'referrer',
-        type: 'address',
-      },
-      {
-        internalType: 'uint256',
-        name: 'currentbonus',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint24[3]',
-        name: 'refs',
-        type: 'uint24[3]',
-      },
-      {
-        internalType: 'uint256',
-        name: 'totalbonus',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
-    name: 'getUserReferrer',
-    outputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'userAddress', type: 'address' }],
     name: 'getUserStatus',
     outputs: [
-      {
-        internalType: 'uint256',
-        name: 'userAvailable',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'totalDeposit',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'totalWithdraw',
-        type: 'uint256',
-      },
+      { internalType: 'uint256', name: 'userAvailable', type: 'uint256' },
+      { internalType: 'uint256', name: 'totalDeposit', type: 'uint256' },
+      { internalType: 'uint256', name: 'totalWithdraw', type: 'uint256' },
     ],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'userAddress', type: 'address' }],
     name: 'getUserTotalDeposits',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
-    name: 'getUserTotalEarned',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'userAddress', type: 'address' }],
     name: 'getUserTotalWithdrawn',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'userAddress', type: 'address' }],
     name: 'getUserdividends',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
@@ -967,26 +494,10 @@ export let contractABI = [
     outputs: [
       {
         components: [
-          {
-            internalType: 'uint256',
-            name: 'id',
-            type: 'uint256',
-          },
-          {
-            internalType: 'address',
-            name: 'user',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-          {
-            internalType: 'bool',
-            name: 'approved',
-            type: 'bool',
-          },
+          { internalType: 'uint256', name: 'id', type: 'uint256' },
+          { internalType: 'address', name: 'user', type: 'address' },
+          { internalType: 'uint256', name: 'amount', type: 'uint256' },
+          { internalType: 'bool', name: 'approved', type: 'bool' },
         ],
         internalType: 'struct StakeShariah.CapitalWithdrawalRequest[]',
         name: '',
@@ -997,60 +508,24 @@ export let contractABI = [
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'userAddress', type: 'address' }],
     name: 'isActive',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'val',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ internalType: 'bool', name: 'val', type: 'bool' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: '', type: 'address' }],
+    name: 'isBlacklisted',
+    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    name: 'isFreezed',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: '',
-        type: 'bool',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'to',
-        type: 'address',
-      },
-      {
-        internalType: 'uint256',
-        name: 'val',
-        type: 'uint256',
-      },
-      {
-        internalType: 'address',
-        name: 'referrer',
-        type: 'address',
-      },
+      { internalType: 'address', name: 'to', type: 'address' },
+      { internalType: 'uint256', name: 'val', type: 'uint256' },
+      { internalType: 'address', name: '_referrer', type: 'address' },
     ],
     name: 'leaderinvest',
     outputs: [],
@@ -1060,63 +535,85 @@ export let contractABI = [
   {
     inputs: [],
     name: 'maintenanceAddress',
-    outputs: [
-      {
-        internalType: 'address payable',
-        name: '',
-        type: 'address',
-      },
-    ],
+    outputs: [{ internalType: 'address payable', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'marketingAddress',
-    outputs: [
-      {
-        internalType: 'address payable',
-        name: '',
-        type: 'address',
-      },
-    ],
+    outputs: [{ internalType: 'address payable', name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'maxLevels',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'projectAddress',
-    outputs: [
-      {
-        internalType: 'address payable',
-        name: '',
-        type: 'address',
-      },
-    ],
+    outputs: [{ internalType: 'address payable', name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: '', type: 'address' }],
+    name: 'referralCounts',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: '', type: 'address' }],
+    name: 'referralRewards',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [
-      {
-        internalType: 'uint256',
-        name: 'requestId',
-        type: 'uint256',
-      },
+      { internalType: 'address', name: '', type: 'address' },
+      { internalType: 'uint256', name: '', type: 'uint256' },
     ],
+    name: 'referralStats',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: '', type: 'address' }],
+    name: 'referralWithdrawn',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: '', type: 'address' }],
+    name: 'referrers',
+    outputs: [{ internalType: 'address', name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'uint256', name: 'requestId', type: 'uint256' }],
     name: 'rejectCapitalWithdrawal',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'referrer',
-        type: 'address',
-      },
-    ],
+    inputs: [],
+    name: 'secondLevelBonus',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: '_referrer', type: 'address' }],
     name: 'stake',
     outputs: [],
     stateMutability: 'payable',
@@ -1124,64 +621,48 @@ export let contractABI = [
   },
   {
     inputs: [],
+    name: 'thirdLevelBonus',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
     name: 'totalDeposits',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'totalInvested',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'totalReferralRewards',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'totalUsers',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
     inputs: [],
     name: 'totalWithdrawn',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'addr',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: 'addr', type: 'address' }],
     name: 'unfreezeAddress',
     outputs: [],
     stateMutability: 'nonpayable',
@@ -1196,11 +677,7 @@ export let contractABI = [
   },
   {
     inputs: [
-      {
-        internalType: 'uint256',
-        name: 'newBasePercent',
-        type: 'uint256',
-      },
+      { internalType: 'uint256', name: 'newBasePercent', type: 'uint256' },
     ],
     name: 'updateBasePercent',
     outputs: [],
@@ -1208,42 +685,28 @@ export let contractABI = [
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
+    inputs: [{ internalType: 'address', name: '', type: 'address' }],
     name: 'users',
     outputs: [
-      {
-        internalType: 'address',
-        name: 'referrer',
-        type: 'address',
-      },
-      {
-        internalType: 'uint256',
-        name: 'bonus',
-        type: 'uint256',
-      },
+      { internalType: 'address', name: 'referrer', type: 'address' },
+      { internalType: 'uint256', name: 'bonus', type: 'uint256' },
+      { internalType: 'uint256', name: 'checkpoint', type: 'uint256' },
+      { internalType: 'uint256', name: 'totalEarned', type: 'uint256' },
       {
         internalType: 'uint256',
-        name: 'checkpoint',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'totalEarned',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'totalBonus',
+        name: 'totalReferralRewards',
         type: 'uint256',
       },
     ],
     stateMutability: 'view',
     type: 'function',
   },
+  {
+    inputs: [],
+    name: 'withdrawReferralRewards',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  { stateMutability: 'payable', type: 'receive' },
 ];
