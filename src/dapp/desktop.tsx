@@ -527,7 +527,7 @@ function DashBoard({ status }: { status: UserStats }) {
             <div className='flex flex-col'>
               <div>
                 <p className='text-sm md:tex-xl font-semibold font-poppins text-gray-500'>
-                  Total withdrawals
+                  Rewards Withdrawn
                 </p>
               </div>
               <div className='flex flex-row justify-between items-center'>

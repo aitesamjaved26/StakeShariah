@@ -71,6 +71,7 @@ export async function readValues(account) {
     ],
   });
   //var totalrefs = data[2].result[2] as any;
+  console.log(data[7].result);
   const user: UserStats = {
     BASE_PERCENT: Number(ethers.utils.formatEther(data[5].result as any)),
     totalEarned: Number(
@@ -97,7 +98,11 @@ export async function readValues(account) {
           BigNumber.from(data[4].result['totalReferralRewards']) as any
         )
       ).toFixed(4),
-      totalFriends: `${data[7].result}`,
+      totalFriends: {
+        0: `${data[7].result[0]}`,
+        1: `${data[7].result[1]}`,
+        2: `${data[7].result[2]}`,
+      },
       referralEarnings: Number(
         ethers.utils.formatEther(data[8].result as any)
       ).toFixed(4),

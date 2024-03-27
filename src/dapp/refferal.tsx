@@ -37,7 +37,7 @@ function RefferalUI({ status }: { status: UserStats }) {
       });
       const { hash } = await writeContract(request);
       toast.success('Done! You will receive your funds within minutes!', {
-        duration: 5000,
+        duration: 1000,
       });
       console.log('rx', gas);
     } catch (e) {
@@ -82,7 +82,7 @@ function RefferalUI({ status }: { status: UserStats }) {
                   <div className='mt-5'>
                     <div
                       onClick={() => callWithdraw()}
-                      className='bg-gradient-to-br from-blue-400 to-blue-600 text-white rounded w-24 p-2 flex flex-col justify-center items-center text-center'
+                      className='flex flex-col content-center justify-center items-center text-center font-poppins w-32 h-16 text-white text-xl cursor-pointer bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg transform hover:scale-110 transition duration-300 ease-out'
                     >
                       Withdraw
                     </div>
@@ -117,24 +117,23 @@ function RefferalUI({ status }: { status: UserStats }) {
                       Level 3 : {`${status.refferalStatus['totalFriends'][2]}`}
                     </div>
                   </div>
-                  <input
-                    className='w-full text-slate-600 mt-5 h-14 p-2 border-none bg-gray-300 rounded-lg'
-                    readOnly
-                    value={`stakeshariah.com/?ref=${address}`}
-                  ></input>
+                  <div className='flex flex-col md:flex-row items-center justify-between mt-5'>
+                    <input
+                      className='flex-grow text-slate-600  h-14 p-2 border-none bg-gray-300 rounded-lg mr-2'
+                      readOnly
+                      value={`stakeshariah.com/?ref=${address}`}
+                    />
+                    <button
+                      className='text-white mt-5 md:mt-0 text-xl font-poppins w-32 h-14 p-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg shadow-2xl cursor-pointer transform hover:scale-110 transition duration-300 ease-out'
+                      onClick={() =>
+                        copyToClipboard(`stakeshariah.com/?ref=${address}`)
+                      }
+                    >
+                      Copy Link
+                    </button>
+                  </div>
                 </div>
-                <div className='flex flex-col justify-center items-center mt-10 mb-5'>
-                  <button
-                    //className={styles.stakeButton2}
-                    // onClick={() => withdrawToken(account)}
-                    className='text-white text-xl font-poppins i h-10 w-64 mb-5 bg-gradient-to-br from-blue-400 to-blue-600 items-center rounded-full shadow-2xl cursor-pointer absolute overflow-hidden transform hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out'
-                    onClick={() =>
-                      copyToClipboard(`stakeshariah.com/?ref=${address}`)
-                    }
-                  >
-                    Copy Link
-                  </button>
-                </div>
+                <div className='flex flex-col justify-center items-center mt-10 mb-5'></div>
                 <div className='h-42'></div>
               </div>
             </div>
