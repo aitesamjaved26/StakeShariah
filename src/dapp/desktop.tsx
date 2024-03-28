@@ -541,29 +541,6 @@ function DashBoard({ status }: { status: UserStats }) {
               </div>
             </div>
           </div>
-          <div className='flex flex-row p-2 gap-2 items-center justify-start h-28 rounded bg-gray-50 dark:bg-gray-800'>
-            <div className='bg-lime-500 p-2 rounded-full'>
-              <FaMoneyBill
-                color='white'
-                size={20}
-              ></FaMoneyBill>
-            </div>
-            <div className='flex flex-col'>
-              <div>
-                <p className='text-sm md:tex-xl font-semibold font-poppins text-gray-500'>
-                  Total Earned
-                </p>
-              </div>
-              <div className='flex flex-row justify-between items-center'>
-                <div className='text-xl md:text-3xl font-bold'>
-                  {status.totalEarned} BNB
-                </div>
-              </div>
-              <div className='text-zinc-600'>
-                ~ {(Number(status.totalEarned) * bnbPrice).toFixed(5)} $
-              </div>
-            </div>
-          </div>
 
           {status.referral != '0x0000000000000000000000000000000000000000' && (
             <div className='flex flex-row p-2 gap-2 items-center justify-start h-28 rounded bg-gray-50 dark:bg-gray-800'>
@@ -640,7 +617,10 @@ function DashBoard({ status }: { status: UserStats }) {
                     ></AiOutlinePlusCircle>
                   ),
                   widget: (
-                    <InvestUI onCancel={() => setShowDialog(false)}></InvestUI>
+                    <InvestUI
+                      status={status}
+                      onCancel={() => setShowDialog(false)}
+                    ></InvestUI>
                   ),
                 },
                 {

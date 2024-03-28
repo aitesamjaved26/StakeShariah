@@ -123,7 +123,7 @@ export async function approveAmount(
     toast.success(
       'Congratulations! 🎉 Your deposit has been completed successfully. 🏦💰',
       {
-        duration: 3000,
+        duration: 1000,
       }
     );
     console.log(hash);
@@ -357,7 +357,13 @@ export function AccountUI({ status }: { status: UserStats }) {
     </div>
   );
 }
-export function InvestUI({ onCancel }) {
+export function InvestUI({
+  onCancel,
+  status,
+}: {
+  onCancel: any;
+  status: UserStats;
+}) {
   const [inputValue, setInputValue] = useState('');
   const { address } = useAccount();
   const [openModal, setOpenModal] = useState(false);
@@ -383,10 +389,17 @@ export function InvestUI({ onCancel }) {
     return ethAddress; // Return the original address if it's not in the expected format.
   }
   function getRefAddress() {
-    if (refAddrr != null && refAddrr != address) {
-      return refAddrr;
+    if (
+      status.referral != null &&
+      status.referral != '0x0000000000000000000000000000000000000000'
+    ) {
+      return status.referral;
     } else {
-      return '0x901a14901eBAeacfB397dcf6913FcB87eB103E7B';
+      if (refAddrr != null && refAddrr != address) {
+        return refAddrr;
+      } else {
+        return '0x901a14901eBAeacfB397dcf6913FcB87eB103E7B';
+      }
     }
   }
   const notes = [
@@ -439,8 +452,8 @@ export function InvestUI({ onCancel }) {
                   placeholder='Amount in BNB'
                 />
               </label>
-              {refAddrr != null && <label>Your refferal address</label>}
-              {refAddrr != null && (
+              {getRefAddress() != null && <label>Your refferal address</label>}
+              {getRefAddress() != null && (
                 <div>{`\n ${shortenEthAddress(getRefAddress())}`}</div>
               )}
             </form>

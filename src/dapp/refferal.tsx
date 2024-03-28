@@ -82,7 +82,7 @@ function RefferalUI({ status }: { status: UserStats }) {
                   <div className='mt-5'>
                     <div
                       onClick={() => callWithdraw()}
-                      className='flex flex-col content-center justify-center items-center text-center font-poppins w-32 h-16 text-white text-xl cursor-pointer bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg transform hover:scale-110 transition duration-300 ease-out'
+                      className='flex flex-col content-center justify-center items-center text-center font-poppins w-32 h-14 text-white text-xl cursor-pointer bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg transform hover:scale-110 transition duration-300 ease-out'
                     >
                       Withdraw
                     </div>
