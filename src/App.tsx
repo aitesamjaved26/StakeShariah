@@ -113,13 +113,13 @@ function CX() {
           window.open(`https://bscscan.com/address/${contractAddress}`);
         }}
       ></img>
-      <img
+      {/* <img
         className='h-44 w-fit cursor-pointer'
         src='audit.png'
         onClick={() => {
           window.open(`https://solidaudit.xyz/audit?id=b6466fba`);
         }}
-      ></img>
+      ></img> */}
     </div>
   );
 }
