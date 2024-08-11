@@ -14,13 +14,13 @@ export const LogoLinks = () => (
         className='h-32 w-48 cursor-pointer'
         src='bnb.svg'
       ></img>
-      <img
+      {/* <img
         onClick={() => {
           window.open('https://solidaudit.xyz/audit?id=b6466fba');
         }}
         className='h-full w-56 cursor-pointer'
         src='audit.png'
-      ></img>
+      ></img> */}
     </div>
   </div>
 );
