@@ -103,23 +103,23 @@ function HomePage() {
   );
 }
 
-function CX() {
-  return (
-    <div className='flex flex-col md:flex-row gap-10 justify-center items-start'>
-      <img
-        className='h-44 w-fit cursor-pointer'
-        src='bnb_banner.png'
-        onClick={() => {
-          window.open(`https://bscscan.com/address/${contractAddress}`);
-        }}
-      ></img>
-      {/* <img
-        className='h-44 w-fit cursor-pointer'
-        src='audit.png'
-        onClick={() => {
-          window.open(`https://solidaudit.xyz/audit?id=b6466fba`);
-        }}
-      ></img> */}
-    </div>
-  );
-}
+// function CX() {
+//   return (
+//     <div className='flex flex-col md:flex-row gap-10 justify-center items-start'>
+//       <img
+//         className='h-44 w-fit cursor-pointer'
+//         src='bnb_banner.png'
+//         onClick={() => {
+//           window.open(`https://bscscan.com/address/${contractAddress}`);
+//         }}
+//       ></img>
+//       {/* <img
+//         className='h-44 w-fit cursor-pointer'
+//         src='audit.png'
+//         onClick={() => {
+//           window.open(`https://solidaudit.xyz/audit?id=b6466fba`);
+//         }}
+//       ></img> */}
+//     </div>
+//   );
+// }
