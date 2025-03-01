@@ -134,11 +134,11 @@ function DesktopUI() {
       txt: 'Community',
     },
 
-    {
-      href: `https://bscscan.com/address/${contractAddress}`,
-      icon: <FaFileContract size={20}></FaFileContract>,
-      txt: 'Contract',
-    },
+    // {
+    //   href: `https://bscscan.com/address/${contractAddress}`,
+    //   icon: <FaFileContract size={20}></FaFileContract>,
+    //   txt: 'Contract',
+    // },
     {
       href: 'mailto:support@stakeshariah.com',
       icon: <AiOutlineMail size={22}></AiOutlineMail>,
