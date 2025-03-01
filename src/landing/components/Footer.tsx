@@ -4,26 +4,26 @@ import styles from '../../style';
 import { footerLinks, socialMedia } from '../../constants';
 import { contractAddress } from '../../models/contract';
 const currentYear = new Date().getFullYear();
-// export const LogoLinks = () => (
-//   <div>
-//     <div className='flex flex-col lg:flex-row gap-10 mr-10 justify-center items-center'>
-//       <img
-//         onClick={() => {
-//           window.open(`https://bscscan.com/address/${contractAddress}`);
-//         }}
-//         className='h-32 w-48 cursor-pointer'
-//         src='bnb.svg'
-//       ></img>
-//       {/* <img
-//         onClick={() => {
-//           window.open('https://solidaudit.xyz/audit?id=b6466fba');
-//         }}
-//         className='h-full w-56 cursor-pointer'
-//         src='audit.png'
-//       ></img> */}
-//     </div>
-//   </div>
-// );
+export const LogoLinks = () => (
+  <div>
+    <div className='flex flex-col lg:flex-row gap-10 mr-10 justify-center items-center'>
+      <img
+        onClick={() => {
+          // window.open(`https://bscscan.com/address/${contractAddress}`);
+        }}
+        className='h-32 w-48 cursor-pointer'
+        src='bnb.svg'
+      ></img>
+      {/* <img
+        onClick={() => {
+          window.open('https://solidaudit.xyz/audit?id=b6466fba');
+        }}
+        className='h-full w-56 cursor-pointer'
+        src='audit.png'
+      ></img> */}
+    </div>
+  </div>
+);
 const Footer = () => (
   <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
     <div
