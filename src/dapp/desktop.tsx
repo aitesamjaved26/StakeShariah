@@ -124,7 +124,7 @@ function DesktopUI() {
       txt: 'Referral Stats',
     },
     {
-      href: 'https://t.me/StakeShariah',
+      href: 'https://t.me/stakeshariahdotcom',
       icon: (
         <BsTelegram
           size={22}
@@ -167,7 +167,7 @@ function DesktopUI() {
       txt: 'Referral Stats',
     },
     {
-      href: 'https://t.me/StakeShariah',
+      href: 'https://t.me/stakeshariahdotcom',
       icon: (
         <BsTelegram
           size={22}

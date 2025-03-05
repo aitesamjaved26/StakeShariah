@@ -149,7 +149,7 @@ export const socialMedia = [
   {
     id: 'social-media-4',
     icon: send,
-    link: 'https://t.me/StakeShariah',
+    link: 'https://t.me/stakeshariahdotcom',
   },
 
   {
