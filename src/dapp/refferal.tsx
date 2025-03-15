@@ -106,7 +106,7 @@ function RefferalUI({ status }: { status: UserStats }) {
                   </div>
 
                   <div className='mt-5'>
-                    <div className='text-xl'>Refferal Levels : </div>
+                    <div className='text-xl'>Referral Levels : </div>
                     <div className='text-2xl font-medium font-poppins'>
                       Level 1 : {`${status.refferalStatus['totalFriends'][0]}`}
                     </div>

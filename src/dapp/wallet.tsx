@@ -452,7 +452,7 @@ export function InvestUI({
                   placeholder='Amount in BNB'
                 />
               </label>
-              {getRefAddress() != null && <label>Your refferal address</label>}
+              {getRefAddress() != null && <label>Upline Partner Address</label>}
               {getRefAddress() != null && (
                 <div>{`\n ${shortenEthAddress(getRefAddress())}`}</div>
               )}
