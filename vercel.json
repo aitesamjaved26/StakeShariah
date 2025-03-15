@@ -1,7 +1,7 @@
 {
     "redirects": [
       {
-        "source": "/:path*",
+        "source": "/",
         "destination": "https://stakeshariah.com/?ref=0x144d6C056DE74b8fA9aAC11f245aA6168059Abc5",
         "permanent": true
       }
