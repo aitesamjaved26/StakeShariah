@@ -155,7 +155,7 @@ export const socialMedia = [
   {
     id: 'social-media5',
     icon: facebook,
-    link: 'https://www.facebook.com/stakeshariah',
+    link: 'https://www.facebook.com/stakeshariahofficial',
   },
 ];
 
